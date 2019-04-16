@@ -11,7 +11,6 @@
     <section>
         <router-outlet></router-outlet>
     </section>
-    <div id="padder"></div>
     <!-- <mat-sidenav-container class="example-container"> -->
     <!-- Here goes the left side nav content-->
     <!-- <mat-sidenav mode="side" opened> -->
@@ -20,9 +19,9 @@
             <li><a routerLink="/viewfte">View FTE</a></li>
         </div> -->
     <!-- </mat-sidenav> -->
-    <div class="divider"></div>
     <!-- Here goes the main content-->
     <!-- <mat-sidenav-content> -->
+    <div class="padder"></div>
     <div class="ftecontainer">
         <form class="form" #userForm="ngForm" role="insert" (ngSubmit)="submitMe()">
             <div class="contact">
@@ -94,8 +93,8 @@
                     </table>
                     <input type="number" name="diQueriesCount" id="diQueriesCount" placeholder="DI Queries" required=""
                         [(ngModel)]="fterecordmodelArr[0].diQueriesCount" class="form-control">
-                    <textarea id="note" name="note" placeholder="Note" required="" [(ngModel)]="fterecordmodelArr[0].note"
-                        class="form-control"></textarea>
+                    <textarea id="note" name="note" placeholder="Note" required=""
+                        [(ngModel)]="fterecordmodelArr[0].note" class="form-control"></textarea>
                     <div class="send-button">
                         <!-- <input type="submit" value="Submit"> -->
                         <button type="submit">Submit</button>
@@ -105,6 +104,7 @@
         </form>
 
     </div>
+    <div class="padder"></div>
 </body>
 <!-- </mat-sidenav-content>
 </mat-sidenav-container> -->

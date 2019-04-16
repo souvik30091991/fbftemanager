@@ -89,9 +89,6 @@ h1 {
     margin: 50px auto;
     letter-spacing: 3px;
 }
-#padder{
-    padding-top: 10%;
-}
 .contact label {
     color: #F96D6E;
     font-weight: 600;
@@ -157,5 +154,8 @@ h1 {
     box-shadow:unset;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
+}
+.padder{
+    padding: 50px;
 }
 /*-- Index-Page-Styling --*/
