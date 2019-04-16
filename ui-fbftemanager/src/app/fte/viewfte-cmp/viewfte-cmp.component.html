@@ -1,0 +1,77 @@
+<head>
+    <title>viewfte</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" type="text/css"
+        media="all">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" type="text/css"
+        media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <section>
+        <router-outlet></router-outlet>
+    </section>
+    <section>
+        <mat-sidenav-container class="example-container">
+            <!-- Here goes the left side nav content-->
+            <mat-sidenav mode="side" opened>
+                <div class="mybox">
+                    <li><a routerLink="/newfte">New FTE</a></li>
+                    <li><a routerLink="/viewfte">View FTE</a></li>
+                </div>
+            </mat-sidenav>
+            <div class="divider"></div>
+            <!-- Here goes the main content-->
+            <mat-sidenav-content>
+                <table class="zui-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Height</th>
+                            <th>Born</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DeMarcus Cousins</td>
+                            <td>C</td>
+                            <td>6'11"</td>
+                            <td>08-13-1990</td>
+                            <td>$4,917,000</td>
+                        </tr>
+                        <tr>
+                            <td>Isaiah Thomas</td>
+                            <td>PG</td>
+                            <td>5'9"</td>
+                            <td>02-07-1989</td>
+                            <td>$473,604</td>
+                        </tr>
+                        <tr>
+                            <td>Ben McLemore</td>
+                            <td>SG</td>
+                            <td>6'5"</td>
+                            <td>02-11-1993</td>
+                            <td>$2,895,960</td>
+                        </tr>
+                        <tr>
+                            <td>Marcus Thornton</td>
+                            <td>SG</td>
+                            <td>6'4"</td>
+                            <td>05-05-1987</td>
+                            <td>$7,000,000</td>
+                        </tr>
+                        <tr>
+                            <td>Jason Thompson</td>
+                            <td>PF</td>
+                            <td>6'11"</td>
+                            <td>06-21-1986</td>
+                            <td>$3,001,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </section>
+</body>

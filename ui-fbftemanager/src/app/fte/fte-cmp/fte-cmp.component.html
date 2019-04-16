@@ -1,0 +1,110 @@
+<head>
+    <title>fte</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" type="text/css"
+        media="all">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" type="text/css"
+        media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <section>
+        <router-outlet></router-outlet>
+    </section>
+    <div id="padder"></div>
+    <!-- <mat-sidenav-container class="example-container"> -->
+    <!-- Here goes the left side nav content-->
+    <!-- <mat-sidenav mode="side" opened> -->
+    <!-- <div class="mybox">
+            <li><a routerLink="/newfte">New FTE</a></li>
+            <li><a routerLink="/viewfte">View FTE</a></li>
+        </div> -->
+    <!-- </mat-sidenav> -->
+    <div class="divider"></div>
+    <!-- Here goes the main content-->
+    <!-- <mat-sidenav-content> -->
+    <div class="ftecontainer">
+        <form class="form" #userForm="ngForm" role="insert" (ngSubmit)="submitMe()">
+            <div class="contact">
+                <div class="form-group">
+                    <h3>New <b>FTE Request</b></h3><br />
+                    <label>Choose Track</label>
+                    <select id="track" name="track" [(ngModel)]="fterecordmodelArr[0].track" class="form-control">
+                        <option value="bm">Benefit Managment</option>
+                        <option value="ardc">ARDC</option>
+                        <option value="admin">Admin</option>
+                        <option value="co">CO</option>
+                    </select>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" placeholder="Week Start Date" id="weekStDt"
+                            name="weekStDt" [(ngModel)]="fterecordmodelArr[0].weekStDt" class="form-control">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <br />
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="number" name="ftesPerRosterCount" id="ftesPerRosterCount"
+                                    placeholder="FTEs Per Roaster" required=""
+                                    [(ngModel)]="fterecordmodelArr[0].ftesPerRosterCount" class="form-control"></td>
+                            <td>
+                                <input type="number" name="defectCount" placeholder="Defects" required=""
+                                    [(ngModel)]="fterecordmodelArr[0].defectCount" class="form-control">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" name="widgetCount" id="widgetCount" placeholder="Widgets"
+                                    required="" [(ngModel)]="fterecordmodelArr[0].widgetCount" class="form-control">
+                            </td>
+                            <td>
+                                <input type="number" name="ftesLoanedCount" id="ftesLoanedCount"
+                                    placeholder="FTEs Loaned" required=""
+                                    [(ngModel)]="fterecordmodelArr[0].ftesLoanedCount" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" name="ptoCount" id="ptoCount" placeholder="PTOs" required=""
+                                    [(ngModel)]="fterecordmodelArr[0].ptoCount" class="form-control">
+                            </td>
+                            <td>
+                                <input type="number" name="ftesBorrowedCount" id="ftesBorrowedCount"
+                                    placeholder="FTEs Borrowed" required=""
+                                    [(ngModel)]="fterecordmodelArr[0].ftesBorrowedCount" class="form-control"></td>
+                        </tr>
+                    </table>
+                    <input type="number" name="ftesForPerformanceCount" id="ftesForPerformanceCount"
+                        placeholder="FTEs for Perf Tasks" required=""
+                        [(ngModel)]="fterecordmodelArr[0].ftesForPerformanceCount" class="form-control">
+                    <input type="number" name="ftesForExtendedScenarioExecCount" id="ftesForExtendedScenarioExecCount"
+                        placeholder="FTEs for Extended Scenario Execution" required=""
+                        [(ngModel)]="fterecordmodelArr[0].ftesForExtendedScenarioExecCount" class="form-control">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="number" name="excessFteCount" id="excessFteCount" placeholder="Excess FTEs"
+                                    required="" [(ngModel)]="fterecordmodelArr[0].excessFteCount" class="form-control">
+                            </td>
+                            <td>
+                                <input type="number" name="edtDetailsCount" id="edtDetailsCount"
+                                    placeholder="EDT Details" required=""
+                                    [(ngModel)]="fterecordmodelArr[0].edtDetailsCount" class="form-control"></td>
+                        </tr>
+                    </table>
+                    <input type="number" name="diQueriesCount" id="diQueriesCount" placeholder="DI Queries" required=""
+                        [(ngModel)]="fterecordmodelArr[0].diQueriesCount" class="form-control">
+                    <textarea id="note" name="note" placeholder="Note" required="" [(ngModel)]="fterecordmodelArr[0].note"
+                        class="form-control"></textarea>
+                    <div class="send-button">
+                        <!-- <input type="submit" value="Submit"> -->
+                        <button type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+<!-- </mat-sidenav-content>
+</mat-sidenav-container> -->
