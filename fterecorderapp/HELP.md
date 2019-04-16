@@ -30,7 +30,7 @@ db.fterecsequence.insert({_id: "fterec",seq: 0})
 --------------------------------
 [
 	{
-		"track": "DC",
+		"track": "BM",
 	    "ftesPerRosterCount": 5,
     	"defectCount": 4,
     	"widgetCount": 7,
@@ -41,10 +41,13 @@ db.fterecsequence.insert({_id: "fterec",seq: 0})
     	"ftesForExtendedScenarioExecCount": 2,
     	"excessFteCount": 1,
     	"edtDetailsCount": 2,
-    	"diQueriesCount": 1
+    	"diQueriesCount": 1,
+    	"employee":{
+    		"personnelNumber":485702
+    	}
 	},
 	{
-		"track": "AR",
+		"track": "ARDC",
 	    "ftesPerRosterCount": 5,
     	"defectCount": 4,
     	"widgetCount": 7,
@@ -55,7 +58,10 @@ db.fterecsequence.insert({_id: "fterec",seq: 0})
     	"ftesForExtendedScenarioExecCount": 2,
     	"excessFteCount": 1,
     	"edtDetailsCount": 2,
-    	"diQueriesCount": 1
+    	"diQueriesCount": 1,
+    	"employee":{
+    		"personnelNumber":485702
+    	}
 	}
 	
 ]
