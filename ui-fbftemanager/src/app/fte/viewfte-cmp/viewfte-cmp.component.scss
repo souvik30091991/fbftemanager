@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: #00405d;
     color: #FFF;
     font-family: 'Roboto', sans-serif;
@@ -14,23 +14,16 @@ body a {
     text-decoration: none;
 }
 
-.ftecontainer {
-    width: 30%;
-    margin: 0 auto;
-    background-color: #DCDCDC;
-    color: #000;
-    font-family: 'Raleway', sans-serif;
-    text-align: left;
-    padding: 2%;
-    overflow:auto;
-    border-radius: 5px;
-}
-
 .zui-table {
     border: solid 1px #DDEEEE;
     border-collapse: collapse;
     border-spacing: 0;
     font: normal 13px Arial, sans-serif;
+    position: absolute;
+    margin: 0 auto;
+    height: 200px;
+    width: 400px;
+    
 }
 .zui-table thead th {
     background-color: #DDEFEF;
@@ -45,4 +38,4 @@ body a {
     color: #333;
     padding: 10px;
     text-shadow: 1px 1px 1px #fff;
-}
+} */

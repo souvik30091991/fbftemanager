@@ -1,0 +1,23 @@
+.example-container {
+    position: absolute;
+    margin: 0 auto;
+    z-index: -1;
+    height: 74%;
+    width: 100%;
+    background-color:transparent;
+}
+.tp-section{
+    position: absolute;
+   display: absolute;
+   align-content: center;
+   align-items: center;
+    height: 100px;
+    width: 100%;
+    margin: 0 auto;
+}
+.padder {
+padding: 20px;
+}
+mat-nav-list mat-list-item{
+background-color:transparent;
+}

@@ -4,10 +4,9 @@ import { FeedbackCmpComponent } from './feedback-cmp/feedback-cmp.component';
 import { ViewfeedbackCmpComponent } from './viewfeedback-cmp/viewfeedback-cmp.component';
 
 @NgModule({
-  declarations: [FeedbackCmpComponent, ViewfeedbackCmpComponent],
+  declarations: [ FeedbackCmpComponent, ViewfeedbackCmpComponent],
   imports: [
-    CommonModule
-  ],
-  exports: [FeedbackCmpComponent]
+    CommonModule,
+  ]
 })
 export class FeedbackModule { }

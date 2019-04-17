@@ -1,0 +1,22 @@
+<head>
+    <title>sidenav</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+    <mat-icon aria-labelledby="left nav toggle icon">menu</mat-icon>
+</button>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened #drawer role="navigation">
+        <mat-nav-list>
+            <a mat-list-item routerLink="newfte">New FTE</a>
+            <a mat-list-item routerLink="viewfte">View FTE </a>
+            <a mat-list-item routerLink="newfte">New Feedback </a>
+            <a mat-list-item routerLink="newfte">View Feedback </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <section class="tp-section">
+            <router-outlet></router-outlet>
+        </section>
+    </mat-sidenav-content>
+</mat-sidenav-container>
