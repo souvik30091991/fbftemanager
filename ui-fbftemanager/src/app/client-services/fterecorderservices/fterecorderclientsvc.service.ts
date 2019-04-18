@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FteRecordClientModel } from '../client-models/fterecordclientmodel';
+import { FteRecordClientModel } from 'src/app/client-models/fterecordermodels/fterecordclientmodel';
 
 @Injectable({
     providedIn: 'root'

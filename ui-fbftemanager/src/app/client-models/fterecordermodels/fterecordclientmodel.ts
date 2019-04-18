@@ -30,5 +30,5 @@ export class FteRecordClientModel {
         public note: string,
     ) { } */
 
-    constructor(){}
+    constructor() {}
 }

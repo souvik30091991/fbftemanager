@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FteRecordClientModel } from 'src/app/fte/client-models/fterecordclientmodel';
-import { FterecorderclientsvcService } from '../client-services/fterecorderclientsvc.service';
+import { FteRecordClientModel } from 'src/app/client-models/fterecordermodels/fterecordclientmodel';
+import { FterecorderclientsvcService } from 'src/app/client-services/fterecorderservices/fterecorderclientsvc.service';
 
 @Component({
     selector: 'app-fte-cmp',
