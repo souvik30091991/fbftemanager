@@ -1,13 +1,15 @@
 package com.fteretrieve.model;
 
+
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="FTERecord")
+@Document(collection = "FTERecord")
 public class FTERecord {
 
 	@Transient
@@ -26,16 +28,20 @@ public class FTERecord {
 	int excessFteCount;
 	int edtDetailsCount;
 	int diQueriesCount;
-	Date fromDate;
-	/*
-	https://www.baeldung.com/queries-in-spring-data-mongodb
-	*/ 
+	Date createDt;
+	Date weekStDt;
+	String note;
+	Employee employee;
+	
+	public FTERecord() {
+	}
 
 	@PersistenceConstructor
 	public FTERecord(long id, String track, int ftesPerRosterCount, int defectCount, int widgetCount,
 			int ftesLoanedCount, int ptoCount, int ftesBorrowedCount, int ftesForPerformanceCount,
 			int ftesForExtendedScenarioExecCount, int excessFteCount, int edtDetailsCount, int diQueriesCount,
-			Date fromDate) {
+			Date createDt, Date weekStDt, String note) {
+
 		super();
 		this.id = id;
 		this.track = track;
@@ -50,23 +56,10 @@ public class FTERecord {
 		this.excessFteCount = excessFteCount;
 		this.edtDetailsCount = edtDetailsCount;
 		this.diQueriesCount = diQueriesCount;
-		this.fromDate = fromDate;
+		this.createDt = createDt;
+		this.weekStDt = weekStDt;
+		this.note = note;
 	}
-
-	public Date getFromDate() {
-		return fromDate;
-	}
-
-	public void setFromDate(Date fromDate) {
-		this.fromDate = fromDate;
-	}
-
-
-
-	public FTERecord() {
-	}
-
-	
 
 	public long getId() {
 		return id;
@@ -172,4 +165,36 @@ public class FTERecord {
 		this.diQueriesCount = diQueriesCount;
 	}
 
+	public Date getCreateDt() {
+		return createDt;
+	}
+
+	public void setCreateDt(Date createDt) {
+		this.createDt = createDt;
+	}
+
+	public Date getWeekStDt() {
+		return weekStDt;
+	}
+
+	public void setWeekStDt(Date weekStDt) {
+		this.weekStDt = weekStDt;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
 }

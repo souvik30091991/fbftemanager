@@ -1,30 +1,22 @@
 package com.fteretrieve.cotroller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
 import com.fteretrieve.dao.FteReteieveRepo;
-import com.fteretrieve.dao.FteRetrieveRepoImpl;
 import com.fteretrieve.model.FTERecord;
-import com.fteretrieve.service.FteRetrieveService;
-import com.fteretrieve.service.FteRetrieveServiceImpl;
-import com.mongodb.BasicDBObject;
 
 
 @RestController
-@RequestMapping("/fetchData")
+@RequestMapping("/fetchftedata")
 public class FteRetrieveController {
 	
 	/*@Autowired
@@ -36,17 +28,17 @@ public class FteRetrieveController {
 	@RequestMapping("/byDate/")
 	public List<FTERecord> getDataByDateRange(@RequestParam
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	Date fromDate) throws ParseException{
+	Date weekStDt) throws ParseException{
 	
-		List<FTERecord> fteRecords = this.fteRepo.findByFromDate(fromDate);
+		List<FTERecord> fteRecords = this.fteRepo.findByWeekStDt(weekStDt);
 		return fteRecords ;
 	}
 	
 	@RequestMapping("/byDatenTrack/")
 	public List<FTERecord> getDataByDateRange(@RequestParam
-			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)Date fromDate,
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)Date weekStDt,
 			@RequestParam String track) throws ParseException{
-		List<FTERecord> fteRecords = this.fteRepo.findByTrackAndFromDate(track, fromDate);
+		List<FTERecord> fteRecords = this.fteRepo.findByTrackAndWeekStDt(track, weekStDt);
 		return fteRecords ;
 	} 
 
@@ -56,4 +48,13 @@ public class FteRetrieveController {
 		List<FTERecord> fteRecords = this.fteRepo.findByTrack(track);
 		return fteRecords ;
 	} 
+	
+	@GetMapping("/")
+	public List<FTERecord> getAllRecs(@RequestParam
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	Date weekStDt) throws ParseException{
+	
+		List<FTERecord> fteRecords = this.fteRepo.findByWeekStDt(weekStDt);
+		return fteRecords ;
+	}
 }

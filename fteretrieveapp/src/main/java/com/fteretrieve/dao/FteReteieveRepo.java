@@ -10,8 +10,8 @@ import com.fteretrieve.model.FTERecord;
 
 @Repository
 public interface FteReteieveRepo extends MongoRepository<FTERecord,Long> {
-	public List<FTERecord> findByFromDate(Date fromDate);
+	public List<FTERecord> findByWeekStDt(Date weekStDt);
 	public List<FTERecord> findByTrack(String track);
-	public List<FTERecord> findByTrackAndFromDate(String track, Date fromDate);
-	public List<FTERecord> findByTrackOrFromDate(String track, Date fromDate);
+	public List<FTERecord> findByTrackAndWeekStDt(String track, Date weekStDt);
+	public List<FTERecord> findByTrackOrWeekStDt(String track, Date weekStDt);
 }
