@@ -7,10 +7,10 @@ import io.github.kaiso.relmongo.config.EnableRelMongo;
 
 @SpringBootApplication
 @EnableRelMongo
-public class Application {
+public class FTERecorderApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(FTERecorderApplication.class, args);
 	}
 
 }
