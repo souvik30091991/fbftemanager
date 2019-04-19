@@ -1,22 +1,19 @@
-package com.fteretrieve.service;
+package com.fteretriever.service;
 
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.fteretrieve.dao.FteReteieveRepo;
-import com.fteretrieve.model.FTERecord;
+import com.fteretriever.dao.FteRetrieverRepo;
+import com.fteretriever.model.FTERecord;
 
 @Service
-public class FteRetrieveServiceImpl implements FteRetrieveService{
+public class FteRetrieverServiceImpl implements FteRetrieverService{
 
 	@Autowired
-	 FteReteieveRepo fteRetieveRepo;
+	 FteRetrieverRepo fteRetieveRepo;
 
 	@Override
 	public List<FTERecord> findByFromDate(Date fromDate) {

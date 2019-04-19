@@ -1,4 +1,4 @@
-package com.fteretrieve;
+package com.fteretriever;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(FteretrieveappApplication.class);
+		return application.sources(FteretrieverappApplication.class);
 	}
 
 }

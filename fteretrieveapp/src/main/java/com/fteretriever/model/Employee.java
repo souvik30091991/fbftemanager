@@ -1,4 +1,4 @@
-package com.fteretrieve.model;
+package com.fteretriever.model;
 
 import java.util.List;
 

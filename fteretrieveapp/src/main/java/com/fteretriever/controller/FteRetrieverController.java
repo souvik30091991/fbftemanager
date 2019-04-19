@@ -1,4 +1,4 @@
-package com.fteretrieve.cotroller;
+package com.fteretriever.controller;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fteretrieve.dao.FteReteieveRepo;
-import com.fteretrieve.model.FTERecord;
+import com.fteretriever.dao.FteRetrieverRepo;
+import com.fteretriever.model.FTERecord;
 
 
 @RestController
 @RequestMapping("/fetchftedata")
-public class FteRetrieveController {
+public class FteRetrieverController {
 	
 	/*@Autowired
-	FteRetrieveService fteRetrieveController;*/
+	FteRetrieverService fteRetrieveController;*/
 	@Autowired
-	private FteReteieveRepo fteRepo;
+	private FteRetrieverRepo fteRepo;
 	
 
 	@RequestMapping("/byDate/")

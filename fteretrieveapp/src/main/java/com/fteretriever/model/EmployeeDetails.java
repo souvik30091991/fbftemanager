@@ -1,4 +1,4 @@
-package com.fteretrieve.model;
+package com.fteretriever.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
