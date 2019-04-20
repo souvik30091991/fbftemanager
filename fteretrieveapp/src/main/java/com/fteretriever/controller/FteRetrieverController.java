@@ -50,11 +50,9 @@ public class FteRetrieverController {
 	} 
 	
 	@GetMapping("/")
-	public List<FTERecord> getAllRecs(@RequestParam
-			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	Date weekStDt) throws ParseException{
+	public List<FTERecord> getAllRecs() throws ParseException{
 	
-		List<FTERecord> fteRecords = this.fteRepo.findByWeekStDt(weekStDt);
+		List<FTERecord> fteRecords = this.fteRepo.findAll();
 		return fteRecords ;
 	}
 }

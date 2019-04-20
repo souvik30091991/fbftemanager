@@ -24,10 +24,12 @@ public class FeedbackRecord {
 	}
 
 	@PersistenceConstructor
-	public FeedbackRecord(long id) {
+	public FeedbackRecord(long id, String feedbackTxt, String suggestion) {
 
 		super();
 		this.id = id;
+		this.feedbackTxt = feedbackTxt;
+		this.suggestion = suggestion;
 
 	}
 

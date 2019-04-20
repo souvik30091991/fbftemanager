@@ -16,7 +16,6 @@ import com.fterecorder.app.service.FTERecorderServiceImpl;
 
 @RestController
 @RequestMapping(path="/fterecorder")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class FTERecorderController {
 
 	@Autowired

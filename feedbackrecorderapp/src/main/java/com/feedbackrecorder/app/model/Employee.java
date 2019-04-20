@@ -1,7 +1,5 @@
 package com.feedbackrecorder.app.model;
 
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
