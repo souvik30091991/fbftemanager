@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FteRecordClientModel } from 'src/app/client-models/fterecordermodels/fterecordclientmodel';
+import { FteRecordClientModel } from 'src/app/client-models/fteclientmodels/fterecordclientmodel';
 import { FterecorderclientsvcService } from 'src/app/client-services/fterecorderservices/fterecorderclientsvc.service';
 
 @Component({

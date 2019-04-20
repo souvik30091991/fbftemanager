@@ -10,6 +10,7 @@ import { SidenavCmpComponent } from '../sidenav/sidenav-cmp/sidenav-cmp.componen
 import { CustomMaterialModule } from '../material/material.module';
 import { FteModule } from '../fte/fte.module';
 import { FeedbackModule } from '../feedback/feedback.module';
+import { ViewfeedbackCmpComponent } from '../feedback/viewfeedback-cmp/viewfeedback-cmp.component';
 
 const appRoutes: Routes = [
     { path: 'dashboard/', component: FteCmpComponent, pathMatch: 'full' },
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
         path: 'dashboard', component: DashboardCmpComponent,
         children: [
             { path: 'newfte', component: FteCmpComponent },
-            { path: 'viewfte', component: ViewfteCmpComponent }
+            { path: 'viewfte', component: ViewfteCmpComponent },
+            { path: 'viewfeedback', component: ViewfeedbackCmpComponent }
         ]
     }
 ];
