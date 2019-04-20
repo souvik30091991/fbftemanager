@@ -16,6 +16,9 @@ public class FeedbackRecord {
 	long id;
 	Date createDt;
 	Employee employee;
+	int rating;
+	String feedbackTxt;
+	String suggestion;
 
 	public FeedbackRecord() {
 	}
@@ -50,6 +53,30 @@ public class FeedbackRecord {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+	public String getFeedbackTxt() {
+		return feedbackTxt;
+	}
+
+	public void setFeedbackTxt(String feedbackTxt) {
+		this.feedbackTxt = feedbackTxt;
+	}
+
+	public String getSuggestion() {
+		return suggestion;
+	}
+
+	public void setSuggestion(String suggestion) {
+		this.suggestion = suggestion;
 	}
 
 }

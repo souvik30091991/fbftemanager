@@ -16,7 +16,7 @@ public class Employee {
 	public Employee() {}
 	
 	@PersistenceConstructor
-	public Employee(long id,long personnelNumber,List<EmployeeDetails> empDetails) {
+	public Employee(long id,long personnelNumber) {
 		super();
 		this.id=id;
 		this.personnelNumber=personnelNumber;

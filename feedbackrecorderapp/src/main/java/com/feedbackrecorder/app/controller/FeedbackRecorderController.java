@@ -12,15 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.feedbackrecorder.app.model.FeedbackRecord;
-import com.feedbackrecorder.app.service.FeedbackRecorderServiceImpl;
+import com.feedbackrecorder.app.service.FeedbackRecorderService;
 
 @RestController
 @RequestMapping(path="/feedbackrecorder")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class FeedbackRecorderController {
 
 	@Autowired
-	FeedbackRecorderServiceImpl service;
+	FeedbackRecorderService service;
 
 	@RequestMapping(path = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean insertFeedbackRecord(@RequestBody FeedbackRecord[] records) {

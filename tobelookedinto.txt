@@ -1,4 +1,9 @@
-Points to work on later in fbftemanager !
-------------------------------------------
-
+Suggestions/Points to work on later in fbftemanager !
+-----------------------------------------------------
+Soumav:
+=======
 1) Code refactoring for services (mainly Autowiring the interfaces in controller)
+2) Implement generics.
+
+Phani:
+======
