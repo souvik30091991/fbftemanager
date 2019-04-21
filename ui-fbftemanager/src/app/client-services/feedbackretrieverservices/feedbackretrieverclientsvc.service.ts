@@ -7,7 +7,7 @@ import { FeedbackRecordClientModel } from 'src/app/client-models/feedbackclientm
 })
 export class FeedbackretrieverclientsvcService {
 
-    getUrl = 'http://localhost:8088/feedbackretriever/';
+    getUrl = 'http://localhost:9130/feedbackretriever/';
     public viewFeedbackResponses: FeedbackRecordClientModel[] = [];
     constructor(private client: HttpClient) { }
 

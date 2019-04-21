@@ -17,13 +17,26 @@
     </thead>
 
     <tbody>
-        <tr *ngFor ="let feedback of viewFeedbackResponses;">
-            <td>{{feedback.id}}</td>
-            <td>{{feedback.employee.personnelNumber}}</td>
-            <td>{{feedback.createDt}}</td>
-            <td>{{feedback.rating}}</td>
-            <td>{{feedback.feedbackTxt}}</td>
-            <td>{{feedback.suggestion}}</td>
-        </tr>
+        <div *ngIf="viewFeedbackResponses.length>0;else norecs">
+            <tr *ngFor="let feedback of viewFeedbackResponses;">
+                <td>{{feedback.id}}</td>
+                <td>{{feedback.employee.personnelNumber}}</td>
+                <td>{{feedback.createDt}}</td>
+                <td>{{feedback.rating}}</td>
+                <td>{{feedback.feedbackTxt}}</td>
+                <td>{{feedback.suggestion}}</td>
+            </tr>
+        </div>
+        <ng-template #norecs>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>*No records found* !</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+        </ng-template>
     </tbody>
 </table>
