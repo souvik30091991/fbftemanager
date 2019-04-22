@@ -1,15 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { FteretrieverService } from 'src/app/client-services/fteretrieverservices/fteretriever.service';
+import { MatDialog } from '@angular/material';
+import { FteRecordClientModel } from 'src/app/client-models/fteclientmodels/fterecordclientmodel';
 
 @Component({
-  selector: 'app-viewfte-cmp',
-  templateUrl: './viewfte-cmp.component.html',
-  styleUrls: ['./viewfte-cmp.component.scss']
+    selector: 'app-viewfte-cmp',
+    templateUrl: './viewfte-cmp.component.html',
+    styleUrls: ['./viewfte-cmp.component.scss']
 })
 export class ViewfteCmpComponent implements OnInit {
 
-  constructor() { }
+    public fteDataAfterSearch: any[] = [];
+    fterecordmodel: FteRecordClientModel = new FteRecordClientModel();
+    constructor(private fteRetrieveServiece: FteretrieverService) {
 
-  ngOnInit() {
-  }
+
+    }
+    searchData() {
+        console.log(this.fterecordmodel);
+        this.fteDataAfterSearch = this.fteRetrieveServiece.getDataInArrayFormat(this.fterecordmodel);
+    }
+    ngOnInit() {
+    }
 
 }
