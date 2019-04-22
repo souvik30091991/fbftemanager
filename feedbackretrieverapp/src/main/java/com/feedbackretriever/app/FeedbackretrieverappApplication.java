@@ -1,16 +1,13 @@
-package com.fterecorder.app;
+package com.feedbackretriever.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import io.github.kaiso.relmongo.config.EnableRelMongo;
-
 @SpringBootApplication
-@EnableRelMongo
-public class Application {
+public class FeedbackretrieverappApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(FeedbackretrieverappApplication.class, args);
 	}
 
 }
