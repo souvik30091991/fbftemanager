@@ -3,6 +3,7 @@ package com.zuul.ZuulGatewayServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
@@ -16,11 +17,11 @@ import com.zuul.ZuulGatewayServer.filter.RouteFilter;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @EnableEurekaClient
 @EnableZuulProxy
 @RibbonClient(name = "server", configuration = RibbonConfiguration.class)
 /*@RibbonClients(defaultConfiguration = RibbonConfiguration.class)*/
+@SpringBootApplication
 public class ZuulGatewayServerApplication {
 
 	public static void main(String[] args) {
