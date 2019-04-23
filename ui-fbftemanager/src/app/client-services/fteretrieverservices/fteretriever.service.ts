@@ -9,7 +9,7 @@ export class FteretrieverService {
     constructor(private httpServices: HttpClient, private datePipe: DatePipe) { }
     private fteDataRetrievedSet: any[] = [];
     private backUrl = '';
-    baseUrl = 'http://localhost:2311/fetchftedata/';
+    baseUrl = 'http://localhost:8090/ftefetch/fetchftedata/';
     getDataAfterSearch(track, weekStDt): any {
 
 
