@@ -1,7 +1,5 @@
 package com.feedbackrecorder.app.model;
 
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,7 +14,7 @@ public class Employee {
 	public Employee() {}
 	
 	@PersistenceConstructor
-	public Employee(long id,long personnelNumber,List<EmployeeDetails> empDetails) {
+	public Employee(long id,long personnelNumber) {
 		super();
 		this.id=id;
 		this.personnelNumber=personnelNumber;

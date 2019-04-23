@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fterecorder.app.model.FTERecord;
-import com.fterecorder.app.service.FTERecorderServiceImpl;
+import com.fterecorder.app.service.FTERecorderService;
 
 @RestController
 @RequestMapping(path="/fterecorder")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin
 public class FTERecorderController {
 
 	@Autowired
-	FTERecorderServiceImpl service;
+	FTERecorderService service;
 
 	@RequestMapping(path = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean insertFTERecord(@RequestBody FTERecord[] records) {

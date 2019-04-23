@@ -1,51 +1,90 @@
-<div class="viewfte">
-    <!--Sample Table-->
-    <!-- <table class="zui-table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Height</th>
-                <th>Born</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>DeMarcus Cousins</td>
-                <td>C</td>
-                <td>6'11"</td>
-                <td>08-13-1990</td>
-                <td>$4,917,000</td>
-            </tr>
-            <tr>
-                <td>Isaiah Thomas</td>
-                <td>PG</td>
-                <td>5'9"</td>
-                <td>02-07-1989</td>
-                <td>$473,604</td>
-            </tr>
-            <tr>
-                <td>Ben McLemore</td>
-                <td>SG</td>
-                <td>6'5"</td>
-                <td>02-11-1993</td>
-                <td>$2,895,960</td>
-            </tr>
-            <tr>
-                <td>Marcus Thornton</td>
-                <td>SG</td>
-                <td>6'4"</td>
-                <td>05-05-1987</td>
-                <td>$7,000,000</td>
-            </tr>
-            <tr>
-                <td>Jason Thompson</td>
-                <td>PF</td>
-                <td>6'11"</td>
-                <td>06-21-1986</td>
-                <td>$3,001,000</td>
-            </tr>
-        </tbody>
-    </table> -->
+
+
+
+
+<head>
+    <title>viewfeedback</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+        integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+</head>
+<div class="ftecontainer">
+    <form class="form" #userForm="ngForm" role="insert" (ngSubmit)="searchData()">
+
+             <label>Choose Track</label>
+                <select id="track" name="track" [(ngModel)]="fterecordmodel.track" class="form-control">
+                    <option value="bm">Benefit Managment</option>
+                    <option value="ardc">ARDC</option>
+                    <option value="admin">Admin</option>
+                    <option value="co">CO</option>
+                </select>
+   <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Week Start Date" id="weekStDt" name="weekStDt"
+                        [(ngModel)]="fterecordmodel.weekStDt" class="form-control">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                  <div class="send-button">
+                    <!-- <input type="submit" value="Submit"> -->
+                    <button type="submit">Search</button>
+                </div>
+</form>
 </div>
+<table class="pure-table pure-table-horizontal">
+    <thead>
+        <tr>
+            <th>FTE ID</th>
+            <th>Track</th>
+            <th>Employee ID</th>
+            <th>Week Start Date</th>
+            <th>FTEs Per Roster</th>
+            <th>Defects</th>
+            <th>Widgets</th>
+            <th>FTEs Loaned</th>
+            <th>PTOs</th>
+            <th>FTEs Borrowed</th>
+            <th>FTEs For Performance</th>
+            <th>FTEs For Extended Scenario Execution</th>
+            <th>Excess FTE</th>
+            <th>EDT Details </th>
+            <th>Di Queries</th>
+            <th>Create Date</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr *ngFor="let feedback of fteDataAfterSearch;">
+            <td>{{feedback.id}}</td>
+                <td>{{feedback.track}}</td>
+             <td>{{feedback.employee}}</td>
+                    <td>{{feedback.weekStDt |date}}</td>
+        
+                        <td>{{feedback.ftesPerRosterCount}}</td>
+        
+                            <td>{{feedback.defectCount}}</td>
+        
+                                <td>{{feedback.widgetCount}}</td>
+            <td>{{feedback.ftesLoanedCount}}</td>
+        
+                <td>{{feedback.ptoCount}}</td>
+            <td>{{feedback.ftesBorrowedCount}}</td>
+            <td>{{feedback.ftesForPerformanceCount}}</td>
+            <td>{{feedback.ftesForExtendedScenarioExecCount}}</td>
+            <td>{{feedback.excessFteCount}}</td>
+            <td>{{feedback.edtDetailsCount}}</td>
+            <td>{{feedback.diQueriesCount}}</td>
+            <td>{{feedback.createDt| date}}</td>
+            <td>{{feedback.note}}</td>
+        
+        
+        </tr>
+
+
+        <tr *ngIf="fteDataAfterSearch.length ==0">
+            <td colspan="16"> <b>*No records found* !</b></td>
+
+        </tr>
+    </tbody>
+</table>

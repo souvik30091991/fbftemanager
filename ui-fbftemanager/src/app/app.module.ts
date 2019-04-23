@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginCmpComponent } from './login/login-cmp/login-cmp.component';
 import { DashboardModule} from './dashboard/dashboard.module';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,7 @@ import { DashboardModule} from './dashboard/dashboard.module';
         HttpClientModule,
         DashboardModule
     ],
-    providers: [],
+    providers: [DatePipe],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
