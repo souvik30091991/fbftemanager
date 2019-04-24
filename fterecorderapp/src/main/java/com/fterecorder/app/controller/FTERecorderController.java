@@ -1,6 +1,8 @@
 package com.fterecorder.app.controller;
 
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,14 +18,20 @@ import com.fterecorder.app.service.FTERecorderService;
 
 @RestController
 @RequestMapping(path="/fterecorder")
-@CrossOrigin
+<<<<<<< 4baa5408135c2cee8b2e74d9197438c5c32075d3
+@CrossOrigin(origins="http://localhost:4200",maxAge=3600)
+=======
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+>>>>>>> FBFTE_Soumav : Layout changes for UI - Feedback retriever
 public class FTERecorderController {
 
 	@Autowired
 	FTERecorderService service;
+	private static final Logger LOG = Logger.getLogger(FTERecorderController.class.getName());
 
 	@RequestMapping(path = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean insertFTERecord(@RequestBody FTERecord[] records) {
+		  LOG.log(Level.INFO, "Inserting FTE"); 
 
 		return service.insertRecords(Arrays.asList(records));
 

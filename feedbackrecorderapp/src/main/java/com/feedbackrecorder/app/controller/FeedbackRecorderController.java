@@ -1,6 +1,8 @@
 package com.feedbackrecorder.app.controller;
 
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,10 +23,11 @@ public class FeedbackRecorderController {
 
 	@Autowired
 	FeedbackRecorderService service;
+	private static final Logger LOG = Logger.getLogger(FeedbackRecorderController.class.getName());
 
 	@RequestMapping(path = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean insertFeedbackRecord(@RequestBody FeedbackRecord[] records) {
-
+		  LOG.log(Level.INFO, "Inserting FTE"); 
 		return service.insertRecords(Arrays.asList(records));
 
 	}
