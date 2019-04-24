@@ -5,10 +5,7 @@ HELP.md
 ### STS ###
 .apt_generated
 .classpath
-.factorypath
-.project
-.settings
-.springBeans
+.factorypath.springBeans
 .sts4-cache
 
 ### IntelliJ IDEA ###
