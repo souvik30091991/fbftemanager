@@ -13,7 +13,7 @@ export class FteRecordClientModel {
         public workableDefectsCount: number;
         public medsDefAnalysisCount: number;
         public weekStDt: Date;
-        public weekEnDt: Date;
+        public weekEdDt: Date;
         public note: string;
    /*  constructor(
         public track: string,

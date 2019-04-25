@@ -51,6 +51,8 @@ public class FTERecord {
 	LocalDate createDt;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	LocalDate weekStDt;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	LocalDate weekEdDt;
 	String note;
 	Employee employee;
 
@@ -61,7 +63,7 @@ public class FTERecord {
 	public FTERecord(long id, String track, int ftesPerRosterCount, int defectCount, int defectFteCount,
 			int widgetCount, int ftesLoanedCount, int ptoCount, int ftesBorrowedCount, int ftesForPerformanceCount,
 			int ftesForExtendedScenarioExecCount, int excessFteCount, int workableDefectsCount,
-			int medsDefAnalysisCount, LocalDate createDt, LocalDate weekStDt, String note) {
+			int medsDefAnalysisCount, LocalDate createDt, LocalDate weekStDt,LocalDate weekEdDt, String note) {
 
 		super();
 		this.id = id;
@@ -80,6 +82,7 @@ public class FTERecord {
 		this.medsDefAnalysisCount = medsDefAnalysisCount;
 		this.createDt = createDt;
 		this.weekStDt = weekStDt;
+		this.weekEdDt = weekEdDt;
 		this.note = note;
 	}
 
@@ -195,6 +198,14 @@ public class FTERecord {
 		this.weekStDt = weekStDt;
 	}
 
+	public LocalDate getWeekEdDt() {
+		return weekEdDt;
+	}
+
+	public void setWeekEdDt(LocalDate weekEdDt) {
+		this.weekEdDt = weekEdDt;
+	}
+	
 	public String getNote() {
 		return note;
 	}
