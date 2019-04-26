@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginCmpComponent } from './login/login-cmp/login-cmp.component';
 import { DashboardModule} from './dashboard/dashboard.module';
 import { DatePipe } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
     declarations: [
@@ -21,7 +24,8 @@ import { DatePipe } from '@angular/common';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        DashboardModule
+        DashboardModule,
+        BrowserAnimationsModule
     ],
     providers: [DatePipe],
     bootstrap: [AppComponent]
