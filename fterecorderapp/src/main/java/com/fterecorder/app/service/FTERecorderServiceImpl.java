@@ -1,6 +1,7 @@
 package com.fterecorder.app.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,9 @@ public class FTERecorderServiceImpl implements FTERecorderService {
 
 		records.forEach(r -> {
 			r.setId(seq.getNextFteRecSequenceId(FTEREC_SEQ_KEY));
-			r.setCreateDt(LocalDate.now());
+			r.setCreateDt(LocalDateTime.now());
+			r.setWeekStDt(r.getWeekStDt().plusDays(1));
+			r.setWeekEdDt(r.getWeekEdDt().plusDays(1));
 		});
 
 		try {

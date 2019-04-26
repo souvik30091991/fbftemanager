@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FteretrieverService } from 'src/app/client-services/fteretrieverservices/fteretriever.service';
 import { FteRecordClientModel } from 'src/app/client-models/fteclientmodels/fterecordclientmodel';
 import * as XLSX from 'xlsx';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 import { FtedeleteService } from 'src/app/client-services/ftedeleteservice/ftedelete.service';
 import { OkdialogcmpComponent } from 'src/app/dialogs/okdialogcmp/okdialogcmp.component';
 
