@@ -16,6 +16,6 @@ import { CustomMaterialModule } from '../material/material.module';
     entryComponents: [FteCmpComponent, ViewfteCmpComponent],
     bootstrap: [FteCmpComponent, ViewfteCmpComponent],
     providers: [],
-    exports: [FteCmpComponent, ViewfteCmpComponent]
+    exports: [FteCmpComponent, ViewfteCmpComponent, CustomMaterialModule]
 })
 export class FteModule { }

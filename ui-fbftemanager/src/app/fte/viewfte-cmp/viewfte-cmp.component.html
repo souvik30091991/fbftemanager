@@ -36,7 +36,7 @@
         </div>
     </form>
 </div>
-<table class="pure-table pure-table-horizontal">
+<!-- <table class="pure-table pure-table-horizontal">
     <thead>
         <tr>
             <th>Track</th>
@@ -89,4 +89,84 @@
 
         </tr>
     </tbody>
-</table>
+</table> -->
+<div class="example-container mat-elevation-z8 " #TABLE>
+    <table mat-table #table [dataSource]="dataSource">
+
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <ng-container matColumnDef="track">
+            <th mat-header-cell *matHeaderCellDef> Track </th>
+            <td mat-cell *matCellDef="let element"> {{element.track}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="weekStDt">
+            <th mat-header-cell *matHeaderCellDef> Week St Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.weekStDt}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="weekEdDt">
+            <th mat-header-cell *matHeaderCellDef> Week End Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.weekEdDt}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ftesPerRosterCount">
+            <th mat-header-cell *matHeaderCellDef> FTEs Per Roaster </th>
+            <td mat-cell *matCellDef="let element"> {{element.ftesPerRosterCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="defectCount">
+            <th mat-header-cell *matHeaderCellDef> Defect Count </th>
+            <td mat-cell *matCellDef="let element"> {{element.defectCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="workableDefectsCount">
+            <th mat-header-cell *matHeaderCellDef> Workable Defect Count</th>
+            <td mat-cell *matCellDef="let element"> {{element.workableDefectsCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="defectFteCount">
+            <th mat-header-cell *matHeaderCellDef> FTE Count </th>
+            <td mat-cell *matCellDef="let element"> {{element.defectFteCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="widgetCount">
+            <th mat-header-cell *matHeaderCellDef> Widget Count </th>
+            <td mat-cell *matCellDef="let element"> {{element.widgetCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ftesLoanedCount">
+            <th mat-header-cell *matHeaderCellDef> FTEs Loaned Count </th>
+            <td mat-cell *matCellDef="let element"> {{element.ftesLoanedCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ptoCount">
+            <th mat-header-cell *matHeaderCellDef> PTO Count </th>
+            <td mat-cell *matCellDef="let element"> {{element.ptoCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ftesBorrowedCount">
+            <th mat-header-cell *matHeaderCellDef> FTEs Borrowed </th>
+            <td mat-cell *matCellDef="let element"> {{element.ftesBorrowedCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ftesForPerformanceCount">
+            <th mat-header-cell *matHeaderCellDef> FTEs for Performance  </th>
+            <td mat-cell *matCellDef="let element"> {{element.ftesForPerformanceCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ftesForExtendedScenarioExecCount">
+            <th mat-header-cell *matHeaderCellDef> FTEs for Extended Scenario </th>
+            <td mat-cell *matCellDef="let element"> {{element.ftesForExtendedScenarioExecCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="medsDefAnalysisCount">
+            <th mat-header-cell *matHeaderCellDef> Meds Defect Analysis </th>
+            <td mat-cell *matCellDef="let element"> {{element.medsDefAnalysisCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="excessFteCount">
+            <th mat-header-cell *matHeaderCellDef> Excess FTE Count </th>
+            <td mat-cell *matCellDef="let element"> {{element.excessFteCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="note">
+            <th mat-header-cell *matHeaderCellDef> Note </th>
+            <td mat-cell *matCellDef="let element"> {{element.note}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+<div>
+    <button mat-raised-button color="primary" (click)="ExportTOExcel()">Export as Excel</button></div>
