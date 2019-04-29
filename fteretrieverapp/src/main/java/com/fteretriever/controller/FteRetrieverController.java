@@ -2,21 +2,21 @@ package com.fteretriever.controller;
 
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fteretriever.dao.FteRetrieverRepo;
 import com.fteretriever.model.FTERecord;
 import com.fteretriever.service.FteRetrieverService;
 
@@ -33,7 +33,7 @@ public class FteRetrieverController {
 	FteRetrieverService fteRetrieveController;*/
 
 	@Autowired
-	private FteRetrieverService fteSeriece;
+	private FteRetrieverService fteService;
 	
 
 	@RequestMapping("/byDate/")
@@ -42,7 +42,7 @@ public class FteRetrieverController {
 	LocalDate weekStDt,@RequestParam
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate weekEdDt) throws ParseException{
 	
-		List<FTERecord> fteRecords = this.fteSeriece.findByDateRange(weekStDt,weekEdDt);
+		List<FTERecord> fteRecords = this.fteService.findByDateRange(weekStDt,weekEdDt);
 		return fteRecords ;
 	}
 
@@ -53,21 +53,25 @@ public class FteRetrieverController {
 			@RequestParam
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate weekEdDt,
 			@RequestParam String track) throws ParseException{
-		List<FTERecord> fteRecords = this.fteSeriece.findByDateRangenTrack(weekStDt,weekEdDt,track);
+		List<FTERecord> fteRecords = this.fteService.findByDateRangenTrack(weekStDt,weekEdDt,track);
 		return fteRecords ;
 	} 
 
 	@RequestMapping("/byTrack/")
 	public List<FTERecord> getDataByDateRange(
 			@RequestParam String track) throws ParseException{
-		List<FTERecord> fteRecords = this.fteSeriece.findBytrack(track);
+		List<FTERecord> fteRecords = this.fteService.findBytrack(track);
 		return fteRecords ;
 	} 
 	
 	@GetMapping("/")
 	public List<FTERecord> getAllRecs() throws ParseException{
 	
-		List<FTERecord> fteRecords = this.fteSeriece.getAllData();
+		List<FTERecord> fteRecords = this.fteService.getAllData();
 		return fteRecords ;
+	}
+	@RequestMapping(value="/getTotalFTECountByTrack/{track}",method=RequestMethod.GET)
+	public int getFTECountByTrack(@PathVariable("track") String track) {
+		return fteService.findFteCountByTrack(track).get(0).getFteCount();
 	}
 }
