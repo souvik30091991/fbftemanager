@@ -1,14 +1,12 @@
 package com.fterecorder.app.model;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Document(collection = "FTERecord")
 public class FTERecord {
@@ -47,12 +45,12 @@ public class FTERecord {
 		this.workableDefectsCount = workableDefectsCount;
 	}
 
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	LocalDate createDt;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	LocalDate weekStDt;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	LocalDate weekEdDt;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	LocalDateTime createDt;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	LocalDateTime weekStDt;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	LocalDateTime weekEdDt;
 	String note;
 	Employee employee;
 
@@ -63,7 +61,7 @@ public class FTERecord {
 	public FTERecord(long id, String track, int ftesPerRosterCount, int defectCount, int defectFteCount,
 			int widgetCount, int ftesLoanedCount, int ptoCount, int ftesBorrowedCount, int ftesForPerformanceCount,
 			int ftesForExtendedScenarioExecCount, int excessFteCount, int workableDefectsCount,
-			int medsDefAnalysisCount, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate createDt, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate weekStDt, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate weekEdDt, String note) {
+			int medsDefAnalysisCount, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime createDt, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime weekStDt, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime weekEdDt, String note) {
 
 		super();
 		this.id = id;
@@ -182,27 +180,27 @@ public class FTERecord {
 		this.medsDefAnalysisCount = medsDefAnalysisCount;
 	}
 
-	public LocalDate getCreateDt() {
+	public LocalDateTime getCreateDt() {
 		return createDt;
 	}
 
-	public void setCreateDt(LocalDate createDt) {
+	public void setCreateDt(LocalDateTime createDt) {
 		this.createDt = createDt;
 	}
 
-	public LocalDate getWeekStDt() {
+	public LocalDateTime getWeekStDt() {
 		return weekStDt;
 	}
 
-	public void setWeekStDt(LocalDate weekStDt) {
+	public void setWeekStDt(LocalDateTime weekStDt) {
 		this.weekStDt = weekStDt;
 	}
 
-	public LocalDate getWeekEdDt() {
+	public LocalDateTime getWeekEdDt() {
 		return weekEdDt;
 	}
 
-	public void setWeekEdDt(LocalDate weekEdDt) {
+	public void setWeekEdDt(LocalDateTime weekEdDt) {
 		this.weekEdDt = weekEdDt;
 	}
 	
