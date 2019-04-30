@@ -12,7 +12,8 @@
             <div class="form-group">
                 <h3>New <b>FTE Tracker</b></h3><br />
                 <label>Choose Track</label>
-                <select id="track" name="track" [(ngModel)]="fterecordmodelArr[0].track" class="form-control">
+                <select id="track" name="track" [(ngModel)]="fterecordmodelArr[0].track" class="form-control"
+                    (change)="fetchFteCount()">
                     <option value="BM">Benefit Managment</option>
                     <option value="ARDC">ARDC</option>
                     <option value="ADMIN">Admin</option>
@@ -38,65 +39,109 @@
                 <br />
                 <table>
                     <tr>
+                        <td><label>Total FTE : </label></td>
                         <td>
-                            <input type="number" name="ftesPerRosterCount" id="ftesPerRosterCount"
-                                placeholder="Total FTE" required=""
+                            <input type="number" name="ftesPerRosterCount" id="ftesPerRosterCount" disabled="true"
+                                placeholder="" required=""
                                 [(ngModel)]="fterecordmodelArr[0].ftesPerRosterCount" class="form-control"></td>
 
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><label>Total Pending Defects : </label></td>
                         <td>
-                            <input type="number" name="defectCount" id="defectCount" placeholder="Total Pending Defects"
+                            <input type="number" name="defectCount" id="defectCount" placeholder=""
                                 required="" [(ngModel)]="fterecordmodelArr[0].defectCount" class="form-control">
                         </td>
                     </tr>
                 </table>
                 <table>
                     <tr>
+                        <td><label>Total Workable Defects : </label></td>
                         <td>
                             <input type="number" name="workableDefectsCount" id="workableDefectsCount"
-                                placeholder="Total Workable Defects" required=""
+                                placeholder="" required=""
                                 [(ngModel)]="fterecordmodelArr[0].workableDefectsCount" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" name="defectFte" id="defectFte"
-                                placeholder="FTE for Defects" required=""
-                                [(ngModel)]="fterecordmodelArr[0].defectFteCount" class="form-control">
                         </td>
                     </tr>
                 </table>
                 <table>
                     <tr>
+                        <td><label>FTE for Defects : </label></td>
                         <td>
-                            <input type="number" name="widgetCount" id="widgetCount" placeholder="FTEs for Widgets" required=""
-                                [(ngModel)]="fterecordmodelArr[0].widgetCount" class="form-control">
+                            <input type="number" name="defectFte" id="defectFte" placeholder=""
+                                required="" [(ngModel)]="fterecordmodelArr[0].defectFteCount" class="form-control">
                         </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><label>FTEs for Widgets : </label></td>
                         <td>
-                            <input type="number" name="ftesLoanedCount" id="ftesLoanedCount" placeholder="FTEs Loaned"
+                            <input type="number" name="widgetCount" id="widgetCount" placeholder=""
+                                required="" [(ngModel)]="fterecordmodelArr[0].widgetCount" class="form-control">
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><label>FTEs Loaned : </label></td>
+                        <td>
+                            <input type="number" name="ftesLoanedCount" id="ftesLoanedCount" placeholder=""
                                 required="" [(ngModel)]="fterecordmodelArr[0].ftesLoanedCount" class="form-control">
                         </td>
                     </tr>
                     <tr>
+                        <td><label>PTOs : </label></td>
                         <td>
-                            <input type="number" name="ptoCount" id="ptoCount" placeholder="PTOs" required=""
+                            <input type="number" name="ptoCount" id="ptoCount" placeholder="" required=""
                                 [(ngModel)]="fterecordmodelArr[0].ptoCount" class="form-control">
                         </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><label>FTEs Borrowed : </label></td>
                         <td>
                             <input type="number" name="ftesBorrowedCount" id="ftesBorrowedCount"
-                                placeholder="FTEs Borrowed" required=""
+                                placeholder="" required=""
                                 [(ngModel)]="fterecordmodelArr[0].ftesBorrowedCount" class="form-control"></td>
                     </tr>
                 </table>
-                <input type="number" name="ftesForPerformanceCount" id="ftesForPerformanceCount"
-                    placeholder="FTEs for Perf Tasks" required=""
-                    [(ngModel)]="fterecordmodelArr[0].ftesForPerformanceCount" class="form-control">
-                <input type="number" name="ftesForExtendedScenarioExecCount" id="ftesForExtendedScenarioExecCount"
-                    placeholder="FTEs for UAT Scenario Execution" required=""
-                    [(ngModel)]="fterecordmodelArr[0].ftesForExtendedScenarioExecCount" class="form-control">
-                <input type="number" name="medsDefAnalysisCount" id="medsDefAnalysisCount" placeholder="Meds Defect Analysis"
-                    required="" [(ngModel)]="fterecordmodelArr[0].medsDefAnalysisCount" class="form-control">
                 <table>
                     <tr>
+                        <td><label>FTEs for Perf Tasks : </label></td>
+                        <td><input type="number" name="ftesForPerformanceCount" id="ftesForPerformanceCount"
+                                placeholder="" required=""
+                                [(ngModel)]="fterecordmodelArr[0].ftesForPerformanceCount" class="form-control">
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><label>FTEs for UAT Scenario Execution : </label></td>
+                        <td><input type="number" name="ftesForExtendedScenarioExecCount"
+                                id="ftesForExtendedScenarioExecCount" placeholder=""
+                                required="" [(ngModel)]="fterecordmodelArr[0].ftesForExtendedScenarioExecCount"
+                                class="form-control">
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><label>Meds Defect Analysis : </label></td>
+                        <td><input type="number" name="medsDefAnalysisCount" id="medsDefAnalysisCount"
+                                placeholder="" required=""
+                                [(ngModel)]="fterecordmodelArr[0].medsDefAnalysisCount" class="form-control">
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><label>Excess FTEs : </label></td>
                         <td>
-                            <input type="number" name="excessFteCount" id="excessFteCount" placeholder="Excess FTEs"
+                            <input type="number" name="excessFteCount" id="excessFteCount" placeholder=""
                                 required="" [(ngModel)]="fterecordmodelArr[0].excessFteCount" class="form-control">
                         </td>
                     </tr>

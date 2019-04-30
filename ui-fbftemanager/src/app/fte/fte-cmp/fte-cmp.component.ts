@@ -19,6 +19,14 @@ export class FteCmpComponent implements OnInit {
     ngOnInit() {
     }
 
+    fetchFteCount() {
+        this.fterecsvc.getFteCount(this.fterecordmodelArr[0].track)
+            .subscribe(
+                (data: number) => {
+                    this.fterecordmodelArr[0].ftesPerRosterCount = data;
+                }
+            );
+    }
     submitMe() {
         console.log(this.fterecordmodelArr);
         this.fterecsvc.recordIt(this.fterecordmodelArr)

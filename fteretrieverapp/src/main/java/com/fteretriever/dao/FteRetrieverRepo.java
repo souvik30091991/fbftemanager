@@ -1,7 +1,6 @@
 package com.fteretriever.dao;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;

@@ -7,10 +7,16 @@ import { FteRecordClientModel } from 'src/app/client-models/fteclientmodels/fter
 })
 export class FterecorderclientsvcService {
 
-    postUrl =  'http://localhost:8090/ftemodifications/fterecorder/';
+    postUrl = 'http://localhost:8090/ftemodifications/fterecorder/';
+    getFteCountUrl = 'http://localhost:2311/fetchftedata/getTotalFTECountByTrack/';
     constructor(private client: HttpClient) { }
 
     recordIt(fteRec: FteRecordClientModel[]) {
         return this.client.post<any>(this.postUrl, fteRec);
     }
+
+    getFteCount(track: string) {
+        return this.client.get(this.getFteCountUrl + track);
+    }
+
 }
