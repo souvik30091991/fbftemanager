@@ -10,23 +10,31 @@
 
         </header>
         <div class="body" id="drop">
-            <!-- <i class="fa fa-file-text-o pointer-none" aria-hidden="true"></i> -->
+            <i class="fa fa-file-text-o pointer-none" aria-hidden="true"></i><br /><br />
             <div class="col-md-6 offset-md-3">
-                <h3>Choose File</h3>
+
                 <table>
                     <tr>
-                        <td><input type="file" #thefile/></td>
+                        <td><input type="file" #thefile /></td>
                         <!-- Or..the below can be used, and button can be removed -->
                         <!-- <input type="file" (change)="uploadAndProgress($event.target.files)" name="file" /> -->
-                        <td><button class="btn btn-primary"
-                                (click)="uploadAndProgress(thefile.files)">Upload</button></td>
+                        <td><button class="btn btn-primary" (click)="uploadAndProgress(thefile.files)">Upload</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Upload Percent: {{percentDone}}% <br /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ng-container *ngIf="uploadSuccess">
+                                Upload Successful
+                            </ng-container>
+                        </td>
                     </tr>
                 </table>
-                Upload Percent: {{percentDone}}% <br />
 
-                <ng-container *ngIf="uploadSuccess">
-                    Upload Successful
-                </ng-container>
+
+
             </div>
         </div>
     </div>
