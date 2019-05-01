@@ -13,6 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,16 +34,17 @@ public class DefectLoaderController {
 	@Autowired
 	DefectLoaderService service;
 
-	@RequestMapping(path = "/loadDefectDump", method = RequestMethod.POST)
+	@PostMapping(path = "/loadDefectDump")
 	public boolean loadDefectDump(@RequestParam("file") MultipartFile defExcelDataFile) throws IOException {
 		LOG.log(Level.INFO, "Loading defect Dump");
 		boolean isDataLoaded = false;
 		String fileName = defExcelDataFile.getOriginalFilename();
-		String[] splited = fileName.split("\\s+");
+		System.out.println("FILE NAME ----->" + fileName);
+		String[] splited = fileName.split("\\.");
 		String source = splited[1];
 		List<DefectRecord> defectList = new ArrayList<DefectRecord>();
 		XSSFWorkbook workbook = new XSSFWorkbook(defExcelDataFile.getInputStream());
-		XSSFSheet worksheet = workbook.getSheetAt(1);
+		XSSFSheet worksheet = workbook.getSheetAt(0);
 
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			DefectRecord defRecord = new DefectRecord();
