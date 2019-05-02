@@ -34,7 +34,7 @@ export class DefectloaderCmpComponent implements OnInit {
         var formData = new FormData();
         Array.from(files).forEach(f => formData.append('file', f))
 
-        this.client.post('https://file.io', formData, { reportProgress: true, observe: 'events' })
+        this.client.post(postUrl, formData, { reportProgress: true, observe: 'events' })
             .subscribe(event => {
                 if (event.type === HttpEventType.UploadProgress) {
                     this.percentDone = Math.round(100 * event.loaded / event.total);
