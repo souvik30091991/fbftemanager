@@ -40,11 +40,11 @@ public class DefectLoaderController {
 		boolean isDataLoaded = false;
 		String fileName = defExcelDataFile.getOriginalFilename();
 		System.out.println("FILE NAME ----->" + fileName);
-		String[] splited = fileName.split("\\.");
+		String[] splited = fileName.split("\\s");
 		String source = splited[1];
 		List<DefectRecord> defectList = new ArrayList<DefectRecord>();
 		XSSFWorkbook workbook = new XSSFWorkbook(defExcelDataFile.getInputStream());
-		XSSFSheet worksheet = workbook.getSheetAt(0);
+		XSSFSheet worksheet = workbook.getSheetAt(1);
 
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			DefectRecord defRecord = new DefectRecord();
