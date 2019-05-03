@@ -12,6 +12,9 @@ import { FeedbackModule } from '../feedback/feedback.module';
 import { ViewfeedbackCmpComponent } from '../feedback/viewfeedback-cmp/viewfeedback-cmp.component';
 import { FeedbackCmpComponent } from '../feedback/feedback-cmp/feedback-cmp.component';
 import { OkdialogcmpComponent } from '../dialogs/okdialogcmp/okdialogcmp.component';
+import { DefectloaderCmpComponent } from '../defect/defectloader-cmp/defectloader-cmp.component';
+import { DefectretrieverCmpComponent } from '../defect/defectretriever-cmp/defectretriever-cmp.component';
+import { DefectModule } from '../defect/defect.module';
 
 const appRoutes: Routes = [
     { path: 'dashboard/', component: FteCmpComponent, pathMatch: 'full' },
@@ -21,7 +24,9 @@ const appRoutes: Routes = [
             { path: 'newfte', component: FteCmpComponent },
             { path: 'viewfte', component: ViewfteCmpComponent },
             { path: 'newfeedback', component: FeedbackCmpComponent },
-            { path: 'viewfeedback', component: ViewfeedbackCmpComponent }
+            { path: 'viewfeedback', component: ViewfeedbackCmpComponent },
+            { path: 'loaddefect', component: DefectloaderCmpComponent },
+            { path: 'retrievedefect', component: DefectretrieverCmpComponent }
         ]
     }
 ];
@@ -36,6 +41,7 @@ const appRoutes: Routes = [
         ),
         FteModule,
         FeedbackModule,
+        DefectModule,
         CustomMaterialModule,
     ],
     entryComponents: [OkdialogcmpComponent],
