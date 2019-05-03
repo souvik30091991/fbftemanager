@@ -10,5 +10,5 @@ import com.fteretriever.model.FteCount;
 @Repository
 public interface FteCountRetrieverRepo extends MongoRepository<FteCount, Long>  {
 
-	public List<FteCount> findFteCountByTrac(String track);
+	public List<FteCount> findFteCountByTrack(String track);
 }
