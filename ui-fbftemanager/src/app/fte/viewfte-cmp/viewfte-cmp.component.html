@@ -62,44 +62,44 @@
 
     <tbody>
 
-        <tr *ngFor="let feedback of fteDataAfterSearch;">
-            <td>{{feedback.track}}</td>
-            <td>{{feedback.weekStDt |date}}</td>
-            <td>{{feedback.weekEdDt |date}}</td>
-            <td>{{feedback.ftesPerRosterCount}}</td>
+            <tr *ngFor="let feedback of fteDataAfterSearch;">
+                <td>{{feedback.track}}</td>
+                <td>{{feedback.weekStDt |date}}</td>
+                <td>{{feedback.weekEdDt |date}}</td>
+                <td>{{feedback.ftesPerRosterCount}}</td>
 
-            <td>{{feedback.defectCount}}</td>
-            <td>{{feedback.workableDefectsCount}}</td>
-            <td>{{feedback.defectFteCount}}</td>
-            <td>{{feedback.widgetCount}}</td>
-            <td>{{feedback.ftesLoanedCount}}</td>
+                <td>{{feedback.defectCount}}</td>
+                <td>{{feedback.workableDefectsCount}}</td>
+                <td>{{feedback.defectFteCount}}</td>
+                <td>{{feedback.widgetCount}}</td>
+                <td>{{feedback.ftesLoanedCount}}</td>
 
-            <td>{{feedback.ptoCount}}</td>
-            <td>{{feedback.ftesBorrowedCount}}</td>
-            <td>{{feedback.ftesForPerformanceCount}}</td>
-            <td>{{feedback.ftesForExtendedScenarioExecCount}}</td>
-            <td>{{feedback.medsDefAnalysisCount}}</td>
-            <td>{{feedback.excessFteCount}}</td>
-            <td>{{feedback.note}}</td>
-            <td><button (click)="deleteData(feedback.id)"> delete </button></td>
-
-
-        </tr>
+                <td>{{feedback.ptoCount}}</td>
+                <td>{{feedback.ftesBorrowedCount}}</td>
+                <td>{{feedback.ftesForPerformanceCount}}</td>
+                <td>{{feedback.ftesForExtendedScenarioExecCount}}</td>
+                <td>{{feedback.medsDefAnalysisCount}}</td>
+                <td>{{feedback.excessFteCount}}</td>
+                <td>{{feedback.note}}</td>
+                <td><button (click)="deleteData(feedback.id)"> delete </button></td>
 
 
-        <tr *ngIf="fteDataAfterSearch.length ==0">
-            <td colspan="16"> <b>*No records found* !</b></td>
+            </tr>
 
-        </tr>
+
+            <tr *ngIf="fteDataAfterSearch?.length ==0">
+                <td colspan="16"> <b>*No records found* !</b></td>
+
+            </tr>
     </tbody>
 </table>
 <!-- <div class="example-container mat-elevation-z8 " #TABLE>
     <table mat-table #table [dataSource]="dataSource"> -->
 
-        <!--- Note that these columns can be defined in any order.
+<!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-       <!--  <ng-container matColumnDef="track">
+<!--  <ng-container matColumnDef="track">
             <th mat-header-cell *matHeaderCellDef> Track </th>
             <td mat-cell *matCellDef="let element"> {{element.track}} </td>
         </ng-container>
