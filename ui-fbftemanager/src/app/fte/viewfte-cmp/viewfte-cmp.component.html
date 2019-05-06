@@ -54,6 +54,7 @@
             <th>FTEs For Performance</th>
             <th>FTEs For UAT Scenario Execution</th>
             <th>FTE for Meds Defect Analysis</th>
+            <th>FTE for ND Defect Analysis</th>
             <th>Excess FTE</th>
             <th>Notes</th>
             <th>delete</th>
@@ -62,26 +63,27 @@
 
     <tbody>
 
-            <tr *ngFor="let feedback of fteDataAfterSearch;">
-                <td>{{feedback.track}}</td>
-                <td>{{feedback.weekStDt |date}}</td>
-                <td>{{feedback.weekEdDt |date}}</td>
-                <td>{{feedback.ftesPerRosterCount}}</td>
+            <tr *ngFor="let fte of fteDataAfterSearch;">
+                <td>{{fte.track}}</td>
+                <td>{{fte.weekStDt |date}}</td>
+                <td>{{fte.weekEdDt |date}}</td>
+                <td>{{fte.ftesPerRosterCount}}</td>
 
-                <td>{{feedback.defectCount}}</td>
-                <td>{{feedback.workableDefectsCount}}</td>
-                <td>{{feedback.defectFteCount}}</td>
-                <td>{{feedback.widgetCount}}</td>
-                <td>{{feedback.ftesLoanedCount}}</td>
+                <td>{{fte.defectCount}}</td>
+                <td>{{fte.workableDefectsCount}}</td>
+                <td>{{fte.defectFteCount}}</td>
+                <td>{{fte.widgetCount}}</td>
+                <td>{{fte.ftesLoanedCount}}</td>
 
-                <td>{{feedback.ptoCount}}</td>
-                <td>{{feedback.ftesBorrowedCount}}</td>
-                <td>{{feedback.ftesForPerformanceCount}}</td>
-                <td>{{feedback.ftesForExtendedScenarioExecCount}}</td>
-                <td>{{feedback.medsDefAnalysisCount}}</td>
-                <td>{{feedback.excessFteCount}}</td>
-                <td>{{feedback.note}}</td>
-                <td><button (click)="deleteData(feedback.id)"> delete </button></td>
+                <td>{{fte.ptoCount}}</td>
+                <td>{{fte.ftesBorrowedCount}}</td>
+                <td>{{fte.ftesForPerformanceCount}}</td>
+                <td>{{fte.ftesForExtendedScenarioExecCount}}</td>
+                <td>{{fte.medsDefAnalysisCount}}</td>
+                <td>{{fte.excessFteCount}}</td>
+                <td>{{fte.ndeDefectAnalysis}}</td>
+                <td>{{fte.note}}</td>
+                <td><button (click)="deleteData(fte.id)"> delete </button></td>
 
 
             </tr>

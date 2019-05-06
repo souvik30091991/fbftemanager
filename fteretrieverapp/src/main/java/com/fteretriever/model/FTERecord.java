@@ -1,6 +1,6 @@
 package com.fteretriever.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
@@ -16,41 +16,26 @@ public class FTERecord {
 	@Id
 	long id;
 	String track;
-	int ftesPerRosterCount;
-	int defectCount;
-	int widgetCount;
-	int ftesLoanedCount;
-	int ptoCount;
-	int ftesBorrowedCount;
-	int ftesForPerformanceCount;
-	int ftesForExtendedScenarioExecCount;
-	int excessFteCount;
-	int medsDefAnalysisCount;
-	int workableDefectsCount;
-	int defectFteCount;
+	float ftesPerRosterCount;
+	float defectCount;
+	float widgetCount;
+	float ftesLoanedCount;
+	float ptoCount;
+	float ftesBorrowedCount;
+	float ftesForPerformanceCount;
+	float ftesForExtendedScenarioExecCount;
+	float excessFteCount;
+	float medsDefAnalysisCount;
+	float workableDefectsCount;
+	float defectFteCount;
+	float ndeDefectAnalysis;
 
-	public int getDefectFteCount() {
-		return defectFteCount;
-	}
-
-	public void setDefectFteCount(int defectFteCount) {
-		this.defectFteCount = defectFteCount;
-	}
-
-	public int getWorkableDefectsCount() {
-		return workableDefectsCount;
-	}
-
-	public void setWorkableDefectsCount(int workableDefectsCount) {
-		this.workableDefectsCount = workableDefectsCount;
-	}
-
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	LocalDate createDt;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	LocalDate weekStDt;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	LocalDate weekEdDt;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	LocalDateTime createDt;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	LocalDateTime weekStDt;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	LocalDateTime weekEdDt;
 	String note;
 	Employee employee;
 
@@ -58,10 +43,10 @@ public class FTERecord {
 	}
 
 	@PersistenceConstructor
-	public FTERecord(long id, String track, int ftesPerRosterCount, int defectCount, int defectFteCount,
-			int widgetCount, int ftesLoanedCount, int ptoCount, int ftesBorrowedCount, int ftesForPerformanceCount,
-			int ftesForExtendedScenarioExecCount, int excessFteCount, int workableDefectsCount,
-			int medsDefAnalysisCount, LocalDate createDt, LocalDate weekStDt,LocalDate weekEdDt, String note) {
+	public FTERecord(long id, String track, float ftesPerRosterCount, float defectCount, float defectFteCount,
+			float widgetCount, float ftesLoanedCount, float ptoCount, float ftesBorrowedCount, float ftesForPerformanceCount,
+			float ftesForExtendedScenarioExecCount, float excessFteCount, float workableDefectsCount,
+			float medsDefAnalysisCount, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime createDt, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime weekStDt, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime weekEdDt, String note) {
 
 		super();
 		this.id = id;
@@ -100,110 +85,134 @@ public class FTERecord {
 		this.track = track;
 	}
 
-	public int getFtesPerRosterCount() {
+	public float getFtesPerRosterCount() {
 		return ftesPerRosterCount;
 	}
 
-	public void setFtesPerRosterCount(int ftesPerRosterCount) {
+	public void setFtesPerRosterCount(float ftesPerRosterCount) {
 		this.ftesPerRosterCount = ftesPerRosterCount;
 	}
 
-	public int getDefectCount() {
+	public float getDefectCount() {
 		return defectCount;
 	}
 
-	public void setDefectCount(int defectCount) {
+	public void setDefectCount(float defectCount) {
 		this.defectCount = defectCount;
 	}
 
-	public int getWidgetCount() {
+	public float getWidgetCount() {
 		return widgetCount;
 	}
 
-	public void setWidgetCount(int widgetCount) {
+	public void setWidgetCount(float widgetCount) {
 		this.widgetCount = widgetCount;
 	}
 
-	public int getFtesLoanedCount() {
+	public float getFtesLoanedCount() {
 		return ftesLoanedCount;
 	}
 
-	public void setFtesLoanedCount(int ftesLoanedCount) {
+	public void setFtesLoanedCount(float ftesLoanedCount) {
 		this.ftesLoanedCount = ftesLoanedCount;
 	}
 
-	public int getPtoCount() {
+	public float getPtoCount() {
 		return ptoCount;
 	}
 
-	public void setPtoCount(int ptoCount) {
+	public void setPtoCount(float ptoCount) {
 		this.ptoCount = ptoCount;
 	}
 
-	public int getFtesBorrowedCount() {
+	public float getFtesBorrowedCount() {
 		return ftesBorrowedCount;
 	}
 
-	public void setFtesBorrowedCount(int ftesBorrowedCount) {
+	public void setFtesBorrowedCount(float ftesBorrowedCount) {
 		this.ftesBorrowedCount = ftesBorrowedCount;
 	}
 
-	public int getFtesForPerformanceCount() {
+	public float getFtesForPerformanceCount() {
 		return ftesForPerformanceCount;
 	}
 
-	public void setFtesForPerformanceCount(int ftesForPerformanceCount) {
+	public void setFtesForPerformanceCount(float ftesForPerformanceCount) {
 		this.ftesForPerformanceCount = ftesForPerformanceCount;
 	}
 
-	public int getFtesForExtendedScenarioExecCount() {
+	public float getFtesForExtendedScenarioExecCount() {
 		return ftesForExtendedScenarioExecCount;
 	}
 
-	public void setFtesForExtendedScenarioExecCount(int ftesForExtendedScenarioExecCount) {
+	public void setFtesForExtendedScenarioExecCount(float ftesForExtendedScenarioExecCount) {
 		this.ftesForExtendedScenarioExecCount = ftesForExtendedScenarioExecCount;
 	}
 
-	public int getExcessFteCount() {
+	public float getExcessFteCount() {
 		return excessFteCount;
 	}
 
-	public void setExcessFteCount(int excessFteCount) {
+	public void setExcessFteCount(float excessFteCount) {
 		this.excessFteCount = excessFteCount;
 	}
 
-	public int getMedsDefAnalysisCount() {
+	public float getMedsDefAnalysisCount() {
 		return medsDefAnalysisCount;
 	}
 
-	public void setMedsDefAnalysisCount(int medsDefAnalysisCount) {
+	public void setMedsDefAnalysisCount(float medsDefAnalysisCount) {
 		this.medsDefAnalysisCount = medsDefAnalysisCount;
 	}
 
-	public LocalDate getCreateDt() {
+	public float getWorkableDefectsCount() {
+		return workableDefectsCount;
+	}
+
+	public void setWorkableDefectsCount(float workableDefectsCount) {
+		this.workableDefectsCount = workableDefectsCount;
+	}
+
+	public float getDefectFteCount() {
+		return defectFteCount;
+	}
+
+	public void setDefectFteCount(float defectFteCount) {
+		this.defectFteCount = defectFteCount;
+	}
+
+	public float getNdeDefectAnalysis() {
+		return ndeDefectAnalysis;
+	}
+
+	public void setNdeDefectAnalysis(float ndeDefectAnalysis) {
+		this.ndeDefectAnalysis = ndeDefectAnalysis;
+	}
+
+	public LocalDateTime getCreateDt() {
 		return createDt;
 	}
 
-	public void setCreateDt(LocalDate createDt) {
+	public void setCreateDt(LocalDateTime createDt) {
 		this.createDt = createDt;
 	}
 
-	public LocalDate getWeekStDt() {
+	public LocalDateTime getWeekStDt() {
 		return weekStDt;
 	}
 
-	public void setWeekStDt(LocalDate weekStDt) {
+	public void setWeekStDt(LocalDateTime weekStDt) {
 		this.weekStDt = weekStDt;
 	}
 
-	public LocalDate getWeekEdDt() {
+	public LocalDateTime getWeekEdDt() {
 		return weekEdDt;
 	}
 
-	public void setWeekEdDt(LocalDate weekEdDt) {
+	public void setWeekEdDt(LocalDateTime weekEdDt) {
 		this.weekEdDt = weekEdDt;
 	}
-	
+
 	public String getNote() {
 		return note;
 	}
@@ -219,5 +228,6 @@ public class FTERecord {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+
 
 }

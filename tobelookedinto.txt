@@ -4,6 +4,10 @@ Soumav:
 =======
 1) Code refactoring for services (mainly Autowiring the interfaces in controller)
 2) Implement generics.
+3) Use Abstract classes instead of interfaces for DAOs and implement CRUDRepo 
+(keep abstract methods as it is, and write custom methods)
+4) use wadltojava tool for stub/client model generation 
+(See: http://cxf.547215.n5.nabble.com/How-to-generate-rest-client-with-wadl2java-td5738281.html)
 
 Phani:
 ======
