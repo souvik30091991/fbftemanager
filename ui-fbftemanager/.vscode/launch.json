@@ -11,14 +11,6 @@
             "url": "http://localhost:4200/#",
             "webRoot": "${workspaceFolder}",
             "port": 9249
-        },
-        {
-            "name": "Launch Chrome ui-fbftemanager on Angular CLI Server (1)",
-            "type": "chrome",
-            "request": "launch",
-            "url": "http://localhost:4200/#",
-            "webRoot": "${workspaceFolder}",
-            "port": 9295
         }
     ]
 }
