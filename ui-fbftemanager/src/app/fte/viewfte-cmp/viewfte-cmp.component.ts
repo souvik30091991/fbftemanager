@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FteretrieverService } from 'src/app/client-services/fteretrieverservices/fteretriever.service';
 import { FteRecordClientModel } from 'src/app/client-models/fteclientmodels/fterecordclientmodel';
 import * as XLSX from 'xlsx';
-import { MatTableDataSource, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatDialog, MatPaginator, MatSort } from '@angular/material';
 import { FtedeleteService } from 'src/app/client-services/ftedeleteservice/ftedelete.service';
 import { OkdialogcmpComponent } from 'src/app/dialogs/okdialogcmp/okdialogcmp.component';
 
@@ -19,10 +19,12 @@ export class ViewfteCmpComponent implements OnInit {
     fterecordmodel: FteRecordClientModel = new FteRecordClientModel();
 
     @ViewChild('TABLE') table: ElementRef;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
     public displayedColumns: string[] = ['track', 'weekStDt', 'weekEdDt', 'ftesPerRosterCount', 'defectCount', 'workableDefectsCount',
         'defectFteCount', 'widgetCount', 'ftesLoanedCount', 'ptoCount', 'ftesBorrowedCount', 'ftesForPerformanceCount',
         'ftesForExtendedScenarioExecCount', 'medsDefAnalysisCount', 'excessFteCount', 'note'];
-    public dataSource: any;
+    public dataSource = new MatTableDataSource();
 
 
     ExportTOExcel() {
@@ -40,12 +42,10 @@ export class ViewfteCmpComponent implements OnInit {
     constructor(private fteRetrieveServiece: FteretrieverService, private okDialogue: MatDialog, private ftedeleteService: FtedeleteService) { }
 
     searchData() {
-        this.fteDataAfterSearch = [];
-        console.log('Fetched Data --->');
-        console.log(this.fterecordmodel);
-        this.fteDataAfterSearch = this.fteRetrieveServiece.getDataInArrayFormat(this.fterecordmodel);
-        this.dataSource = this.fteDataAfterSearch;
-        this.dataSource = [...this.dataSource];
+        this.dataSource = null;
+        this.dataSource = this.fteRetrieveServiece.getDataInArrayFormat(this.fterecordmodel);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
     }
     ngOnInit() {
         this.fterecordmodel.weekEdDt = new Date();

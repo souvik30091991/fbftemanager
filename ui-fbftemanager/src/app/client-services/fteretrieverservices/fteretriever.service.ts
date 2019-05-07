@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { MatTableDataSource } from '@angular/material';
 @Injectable({
     providedIn: 'root'
 })
@@ -9,6 +10,7 @@ export class FteretrieverService {
     constructor(private httpServices: HttpClient, private datePipe: DatePipe) { }
     private fteDataRetrievedSet: any[] = [];
     private backUrl = '';
+    dataSource: MatTableDataSource<any> = new MatTableDataSource();
 
     baseUrl = 'http://localhost:8090/ftefetch/fetchftedata/';
     getDataAfterSearch(): any {
@@ -40,38 +42,44 @@ export class FteretrieverService {
         return this.httpServices.get(this.baseUrl + this.backUrl, { params });
     }
 
-    getDatafromTrackArray(track): any[] {
+    getDatafromTrackArray(track): MatTableDataSource<any> {
         this.getDatafromTrack(track).subscribe(
             resp => {
                 Object.assign(this.fteDataRetrievedSet, resp);
+                this.dataSource.data = this.fteDataRetrievedSet;
             });
-        return this.fteDataRetrievedSet;
+        return this.dataSource;
     }
-    getDataFromDateRangeArray(weekStDt, weekEdDt): any[] {
+    getDataFromDateRangeArray(weekStDt, weekEdDt): MatTableDataSource<any> {
         this.getDataFromDateRange(this.datePipe.transform(new Date(weekStDt), 'yyyy-MM-dd'), this.datePipe.transform(new Date(weekEdDt), 'yyyy-MM-dd')).subscribe(
             resp => {
                 Object.assign(this.fteDataRetrievedSet, resp);
+                this.dataSource.data = this.fteDataRetrievedSet;
             });
-        return this.fteDataRetrievedSet;
+        return this.dataSource;
     }
 
-    getDataFromDtRangenTrackArray(track, weekStDt, weekEdDt): any[] {
-        this.getDataFromDtRangenTrack(track, this.datePipe.transform(new Date(weekStDt), 'yyyy-MM-dd'), this.datePipe.transform(new Date(weekEdDt), 'yyyy-MM-dd')).subscribe(
-            resp => {
-                Object.assign(this.fteDataRetrievedSet, resp);
-            });
-        return this.fteDataRetrievedSet;
+    getDataFromDtRangenTrackArray(track, weekStDt, weekEdDt): MatTableDataSource<any> {
+        this.getDataFromDtRangenTrack(track, this.datePipe.transform(new Date(weekStDt), 'yyyy-MM-dd'),
+            this.datePipe.transform(new Date(weekEdDt), 'yyyy-MM-dd')).subscribe(
+                resp => {
+                    Object.assign(this.fteDataRetrievedSet, resp);
+                    this.dataSource.data = this.fteDataRetrievedSet;
+                });
+        return this.dataSource;
     }
 
-    getAllDataInArrayFormat(): any[] {
+    getAllDataInArrayFormat(): MatTableDataSource<any> {
         this.getDataAfterSearch().subscribe(
             resp => {
                 Object.assign(this.fteDataRetrievedSet, resp);
+                this.dataSource.data = this.fteDataRetrievedSet;
             });
-        return this.fteDataRetrievedSet;
+        return this.dataSource;
     }
 
-    getDataInArrayFormat(fterecordmodel): any[] {
+    getDataInArrayFormat(fterecordmodel): MatTableDataSource<any> {
+        this.dataSource.data = [];
         this.fteDataRetrievedSet = new Array();
         this.backUrl = '';
         if (fterecordmodel.track === undefined && fterecordmodel.weekStDt === undefined) {

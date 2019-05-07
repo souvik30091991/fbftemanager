@@ -8,6 +8,7 @@ Soumav:
 (keep abstract methods as it is, and write custom methods)
 4) use wadltojava tool for stub/client model generation 
 (See: http://cxf.547215.n5.nabble.com/How-to-generate-rest-client-with-wadl2java-td5738281.html)
+5) Add Spring Boot Developer or similar dependancy for hot deployment
 
 Phani:
 ======
