@@ -53,31 +53,12 @@ public class DefectLoaderController {
 			DataFormatter formatter = new DataFormatter();
 			XSSFRow row = worksheet.getRow(i);
 			defRecord.setSource(source);
-			defRecord.setTrack(formatter.formatCellValue(row.getCell(0)));
-			defRecord.setNewJiraId(formatter.formatCellValue(row.getCell(2)));
-			defRecord.setComments(formatter.formatCellValue(row.getCell(3)));
-			defRecord.setSecondLevelAnalysis(formatter.formatCellValue(row.getCell(4)));
-			defRecord.setDevUpdates(formatter.formatCellValue(row.getCell(5)));
-			defRecord.setConfirmationRequired(formatter.formatCellValue(row.getCell(6)));
-			defRecord.setWidgetName(formatter.formatCellValue(row.getCell(7)));
-			defRecord.setKey(formatter.formatCellValue(row.getCell(8)));
-			defRecord.setSummary(formatter.formatCellValue(row.getCell(9)));
-			defRecord.setDescription(formatter.formatCellValue(row.getCell(10)));
-			defRecord.setComponents(formatter.formatCellValue(row.getCell(11)));
-			defRecord.setStatus(formatter.formatCellValue(row.getCell(12)));
-			defRecord.setPriority(formatter.formatCellValue(row.getCell(13)));
-			defRecord.setResolution(formatter.formatCellValue(row.getCell(14)));
-			defRecord.setAssignee(formatter.formatCellValue(row.getCell(15)));
-			defRecord.setReporter(formatter.formatCellValue(row.getCell(16)));
-			defRecord.setWidgetId(formatter.formatCellValue(row.getCell(17)));
-			defRecord.setDefectSeverity(formatter.formatCellValue(row.getCell(18)));
-			defRecord.setRootCauseCategory(formatter.formatCellValue(row.getCell(19)));
-			defRecord.setTeam(formatter.formatCellValue(row.getCell(20)));
-			defRecord.setCycle(formatter.formatCellValue(row.getCell(21)));
-			defRecord.setWeek(formatter.formatCellValue(row.getCell(22)));
-			defRecord.setPhase(formatter.formatCellValue(row.getCell(23)));
-			defRecord.setLoadDefect(formatter.formatCellValue(row.getCell(24)));
-			defRecord.setSet(formatter.formatCellValue(row.getCell(25)));
+			defRecord.setKey(formatter.formatCellValue(row.getCell(0)));
+			defRecord.setSummary(formatter.formatCellValue(row.getCell(1)));
+			defRecord.setApplicableToIE(formatter.formatCellValue(row.getCell(2)));
+			defRecord.setNewJiraId(formatter.formatCellValue(row.getCell(3)));
+			defRecord.setComments(formatter.formatCellValue(row.getCell(4)));
+			defRecord.setTrack(formatter.formatCellValue(row.getCell(5)));
 			defectList.add(defRecord);
 		}
 		if (defectList != null) {
