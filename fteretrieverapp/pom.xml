@@ -11,7 +11,7 @@
 	<groupId>com.fteretriever</groupId>
 	<artifactId>fteretrieverapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>fteretrieverapp</name>
 	<description>An app for Retrieving FTE Records</description>
 

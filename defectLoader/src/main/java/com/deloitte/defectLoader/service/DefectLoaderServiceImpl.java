@@ -1,5 +1,6 @@
 package com.deloitte.defectLoader.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class DefectLoaderServiceImpl implements DefectLoaderService {
 	@Override
 	public boolean updateRecords(List<DefectRecord> records) {
 		try {
+			records.get(0).setUpdateDt(LocalDateTime.now());
 			defectRecordRepo.saveAll(records);
 			return true;
 		} catch (Exception ex) {
