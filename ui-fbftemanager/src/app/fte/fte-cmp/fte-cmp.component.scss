@@ -56,7 +56,7 @@ body a {
 }
 
 .ftecontainer {
-    width: 400px;
+    width: 410px;
     margin: 0 auto;
     background-color: #DCDCDC;
     color: #000;
@@ -69,13 +69,13 @@ body a {
     margin: 0 auto;
 }
 
-form[role=insert] h3 {
+form h3 {
 	font-size: 30px;
 	text-align: center;
 	color: #A9A9A9;
 	padding: 35px 0 12px 0;
 }
-form[role=insert] h3 b {
+form h3 b {
 		color: #013781;
 }
 input[type="button"], input[type="submit"] {
@@ -97,12 +97,12 @@ h1 {
     margin: 50px auto;
     letter-spacing: 3px;
 }
-.contact label {
+.ftediv label {
     color: #F96D6E;
     font-weight: 600;
     font-size: 14px;
 }
-.contact select{
+.ftediv select{
     width: 94.5%;
     padding: 10px;
     margin: 10px 0 20px;
@@ -110,7 +110,7 @@ h1 {
     color: #000;
     font-weight: 500;
 }
-.contact input[type="text"], .contact input[type="select"], .contact textarea,.contact input[type="number"] {
+.ftediv input[type="text"], .ftediv input[type="select"], .ftediv textarea,.ftediv input[type="number"] {
     width: 94.5%;
     padding: 10px;
     margin: 10px 0 20px;
@@ -120,23 +120,23 @@ h1 {
     font-family: 'Roboto', sans-serif;
 }
 
-.contact textarea {
+.ftediv textarea {
     height: 100px;
 }
 
-.contact ::-webkit-input-placeholder {
+.ftediv ::-webkit-input-placeholder {
     color: #A9A9A9;
 }
 
-.contact ::-moz-placeholder {
+.ftediv ::-moz-placeholder {
     color: #A9A9A9;
 }
 
-.contact ::-moz-placeholder {
+.ftediv ::-moz-placeholder {
     color: #A9A9A9;
 }
 
-.contact ::-ms-input-placeholder {
+.ftediv ::-ms-input-placeholder {
     color: #A9A9A9;
 }
 

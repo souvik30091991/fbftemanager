@@ -4,47 +4,94 @@
         media="all">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800" type="text/css"
         media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <div class="ftecontainer">
-    <form class="form" #userForm="ngForm" role="insert" (ngSubmit)="submitMe()">
-        <div class="contact">
+    <form class="form" #userForm (ngSubmit)="submitMe()" [formGroup]="fteForm">
+        <div class="ftediv">
             <div class="form-group">
                 <h3>New <b>FTE Tracker</b></h3><br />
                 <label>Choose Track</label>
-                <select id="track" name="track" [(ngModel)]="fterecordmodelArr[0].track" class="form-control"
-                    (change)="fetchFteCount()">
-                    <option value="BM">Benefit Managment</option>
-                    <option value="ARDC">ARDC</option>
-                    <option value="ADMIN">Admin</option>
-                    <option value="CO">Correspondence</option>
-                    <option value="IN">Interfaces</option>
-                    <option value="E&T">Employment & Training</option>
-                    <option value="Reports">Reports</option>
-                    <option value="ED">Eligibility</option>
-                    <option value="EA">EA</option>
-                </select>
-                <mat-form-field>
-                    <input matInput [matDatepicker]="startpicker" placeholder="Start Date" id="weekStDt" name="weekStDt"
-                        [(ngModel)]="fterecordmodelArr[0].weekStDt" class="form-control">
-                    <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
-                    <mat-datepicker #startpicker></mat-datepicker>
-                </mat-form-field>
-                <br />
-                <mat-form-field>
-                    <input matInput [matDatepicker]="endpicker" placeholder="End Date" id="weekEdDt" name="weekEdDt"
-                        [(ngModel)]="fterecordmodelArr[0].weekEdDt" class="form-control">
-                    <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
-                    <mat-datepicker #endpicker></mat-datepicker>
-                </mat-form-field>
-                <br />
+                <table>
+                    <tr>
+                        <td style="width: 100%"> <select id="track" formControlName="track"
+                                [(ngModel)]="fterecordmodelArr[0].track" class="form-control" (change)="fetchFteCount()"
+                                [ngClass]="{ 'is-invalid': submitted && ff.track.errors}">
+
+                                <option value="BM">Benefit Managment</option>
+                                <option value="ARDC">ARDC</option>
+                                <option value="ADMIN">Admin</option>
+                                <option value="CO">Correspondence</option>
+                                <option value="IN">Interfaces</option>
+                                <option value="E&T">Employment & Training</option>
+                                <option value="Reports">Reports</option>
+                                <option value="ED">Eligibility</option>
+                                <option value="EA">EA</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div *ngIf="submitted && ff.track.errors" class="invalid-feedback">
+                                <div *ngIf="ff.track.errors?.required"><i class="fa fa-exclamation-triangle"
+                                        style="font-size:12px" title="Required!"></i>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="startpicker" placeholder="Start Date" id="weekStDt"
+                                    formControlName="weekStDt" [(ngModel)]="fterecordmodelArr[0].weekStDt"
+                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && ff.weekStDt.errors}" />
+                                <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
+                                <mat-datepicker #startpicker></mat-datepicker>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <div *ngIf="submitted && ff.weekStDt.errors" class="invalid-feedback">
+                                <div *ngIf="ff.weekStDt.errors?.required"><i class="fa fa-exclamation-triangle"
+                                        style="font-size:12px" title="Required!"></i>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="endpicker" placeholder="End Date" id="weekEdDt"
+                                    formControlName="weekEdDt" [(ngModel)]="fterecordmodelArr[0].weekEdDt"
+                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && ff.weekEdDt.errors}" />
+                                <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
+                                <mat-datepicker #endpicker></mat-datepicker>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <div *ngIf="submitted && ff.weekEdDt.errors" class="invalid-feedback">
+                                <div *ngIf="ff.weekEdDt.errors?.required"><i class="fa fa-exclamation-triangle"
+                                        style="font-size:12px" title="Required!"></i>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
                 <table>
                     <tr>
                         <td><label>Total FTE : </label></td>
                         <td>
-                            <input type="number" name="ftesPerRosterCount" id="ftesPerRosterCount" disabled="true"
-                                placeholder="" required="" [(ngModel)]="fterecordmodelArr[0].ftesPerRosterCount"
-                                class="form-control"></td>
+                            <input type="number" formControlName="ftesPerRosterCount" id="ftesPerRosterCount"
+                                placeholder="" class="form-control"
+                                [(ngModel)]="fterecordmodelArr[0].ftesPerRosterCount"
+                                [ngClass]="{ 'is-invalid': submitted && ff.ftesPerRosterCount.errors}" /></td>
+                        <div *ngIf="submitted && ff.ftesPerRosterCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.ftesPerRosterCount.errors?.required"><i class="fa fa-exclamation-triangle"
+                                    style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
 
                     </tr>
                 </table>
@@ -52,112 +99,173 @@
                     <tr>
                         <td><label>Total Pending Defects : </label></td>
                         <td>
-                            <input type="number" name="defectCount" id="defectCount" placeholder="" required=""
-                                [(ngModel)]="fterecordmodelArr[0].defectCount" class="form-control">
-                        </td>
+                            <input type="number" formControlName="defectCount" id="defectCount" placeholder=""
+                                class="form-control" [(ngModel)]="fterecordmodelArr[0].defectCount"
+                                [ngClass]="{ 'is-invalid': submitted && ff.defectCount.errors}" /></td>
+
+                        <div *ngIf="submitted && ff.defectCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.defectCount.errors?.required"><i class="fa fa-exclamation-triangle"
+                                    style="font-size:12px" title="Required!" style="font-size:12px"></i>
+                            </div>
+                        </div>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td><label>Total Workable Defects : </label></td>
                         <td>
-                            <input type="number" name="workableDefectsCount" id="workableDefectsCount" placeholder=""
-                                required="" [(ngModel)]="fterecordmodelArr[0].workableDefectsCount"
-                                class="form-control">
-                        </td>
+                            <input type="number" formControlName="workableDefectsCount" id="workableDefectsCount"
+                                placeholder="" class="form-control"
+                                [(ngModel)]="fterecordmodelArr[0].workableDefectsCount"
+                                [ngClass]="{ 'is-invalid': submitted && ff.workableDefectsCount.errors}" /></td>
+                        <div *ngIf="submitted && ff.workableDefectsCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.workableDefectsCount.errors?.required"><i class="fa fa-exclamation-triangle"
+                                    style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td><label>FTE for Defects : </label></td>
                         <td>
-                            <input type="number" name="defectFte" id="defectFte" placeholder="" required=""
-                                [(ngModel)]="fterecordmodelArr[0].defectFteCount" class="form-control">
-                        </td>
+                            <input type="number" formControlName="defectFteCount" id="defectFteCount" placeholder=""
+                                class="form-control" [(ngModel)]="fterecordmodelArr[0].defectFteCount"
+                                [ngClass]="{ 'is-invalid': submitted && ff.defectFteCount.errors}" /></td>
+                        <div *ngIf="submitted && ff.defectFteCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.defectFteCount.errors?.required"><i class="fa fa-exclamation-triangle"
+                                    style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td><label>FTEs for Widgets : </label></td>
                         <td>
-                            <input type="number" name="widgetCount" id="widgetCount" placeholder="" required=""
-                                [(ngModel)]="fterecordmodelArr[0].widgetCount" class="form-control">
-                        </td>
+                            <input type="number" formControlName="widgetCount" id="widgetCount" placeholder=""
+                                class="form-control" [(ngModel)]="fterecordmodelArr[0].widgetCount"
+                                [ngClass]="{ 'is-invalid': submitted && ff.widgetCount.errors}" /></td>
+                        <div *ngIf="submitted && ff.widgetCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.widgetCount.errors?.required"><i class="fa fa-exclamation-triangle"
+                                    style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td><label>FTEs Loaned : </label></td>
                         <td>
-                            <input type="number" name="ftesLoanedCount" id="ftesLoanedCount" placeholder="" required=""
-                                [(ngModel)]="fterecordmodelArr[0].ftesLoanedCount" class="form-control">
-                        </td>
+                            <input type="number" formControlName="ftesLoanedCount" id="ftesLoanedCount" placeholder=""
+                                class="form-control" [(ngModel)]="fterecordmodelArr[0].ftesLoanedCount"
+                                [ngClass]="{ 'is-invalid': submitted && ff.ftesLoanedCount.errors}" /></td>
+                        <div *ngIf="submitted && ff.ftesLoanedCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.ftesLoanedCount.errors?.required"><i class="fa fa-exclamation-triangle"
+                                    style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
                     </tr>
                     <tr>
                         <td><label>PTOs : </label></td>
                         <td>
-                            <input type="number" name="ptoCount" id="ptoCount" placeholder="" required=""
-                                [(ngModel)]="fterecordmodelArr[0].ptoCount" class="form-control">
-                        </td>
+                            <input type="number" formControlName="ptoCount" id="ptoCount" placeholder=""
+                                class="form-control" [(ngModel)]="fterecordmodelArr[0].ptoCount"
+                                [ngClass]="{ 'is-invalid': submitted && ff.ptoCount.errors}" /></td>
+                        <div *ngIf="submitted && ff.ptoCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.ptoCount.errors?.required"><i class="fa fa-exclamation-triangle"
+                                    style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td><label>FTEs Borrowed : </label></td>
                         <td>
-                            <input type="number" name="ftesBorrowedCount" id="ftesBorrowedCount" placeholder=""
-                                required="" [(ngModel)]="fterecordmodelArr[0].ftesBorrowedCount" class="form-control">
-                        </td>
+                            <input type="number" formControlName="ftesBorrowedCount" id="ftesBorrowedCount"
+                                placeholder="" class="form-control" [(ngModel)]="fterecordmodelArr[0].ftesBorrowedCount"
+                                [ngClass]="{ 'is-invalid': submitted && ff.ftesBorrowedCount.errors}" /></td>
+                        <div *ngIf="submitted && ff.ftesBorrowedCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.ftesBorrowedCount.errors?.required"><i class="fa fa-exclamation-triangle"
+                                    style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td><label>FTEs for Perf Tasks : </label></td>
-                        <td><input type="number" name="ftesForPerformanceCount" id="ftesForPerformanceCount"
-                                placeholder="" required="" [(ngModel)]="fterecordmodelArr[0].ftesForPerformanceCount"
-                                class="form-control">
-                        </td>
+                        <td><input type="number" formControlName="ftesForPerformanceCount" id="ftesForPerformanceCount"
+                                placeholder="" class="form-control"
+                                [(ngModel)]="fterecordmodelArr[0].ftesForPerformanceCount"
+                                [ngClass]="{ 'is-invalid': submitted && ff.ftesForPerformanceCount.errors}" /></td>
+                        <div *ngIf="submitted && ff.ftesForPerformanceCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.ftesForPerformanceCount.errors?.required"><i
+                                    class="fa fa-exclamation-triangle" style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td><label>FTEs for UAT Scenario Execution : </label></td>
-                        <td><input type="number" name="ftesForExtendedScenarioExecCount"
-                                id="ftesForExtendedScenarioExecCount" placeholder="" required=""
+                        <td><input type="number" formControlName="ftesForExtendedScenarioExecCount"
+                                id="ftesForExtendedScenarioExecCount" placeholder="" class="form-control"
                                 [(ngModel)]="fterecordmodelArr[0].ftesForExtendedScenarioExecCount"
-                                class="form-control">
+                                [ngClass]="{ 'is-invalid': submitted && ff.ftesForExtendedScenarioExecCount.errors}" />
                         </td>
+                        <div *ngIf="submitted && ff.ftesForExtendedScenarioExecCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.ftesForExtendedScenarioExecCount.errors?.required"><i
+                                    class="fa fa-exclamation-triangle" style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td><label>Meds Defect Analysis : </label></td>
-                        <td><input type="number" name="medsDefAnalysisCount" id="medsDefAnalysisCount" placeholder=""
-                                required="" [(ngModel)]="fterecordmodelArr[0].medsDefAnalysisCount"
-                                class="form-control">
-                        </td>
+                        <td><input type="number" formControlName="medsDefAnalysisCount" id="medsDefAnalysisCount"
+                                placeholder="" class="form-control"
+                                [(ngModel)]="fterecordmodelArr[0].medsDefAnalysisCount"
+                                [ngClass]="{ 'is-invalid': submitted && ff.medsDefAnalysisCount.errors}" /></td>
+                        <div *ngIf="submitted && ff.medsDefAnalysisCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.medsDefAnalysisCount.errors?.required"><i class="fa fa-exclamation-triangle"
+                                    style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td><label>ND Defect Analysis : </label></td>
                         <td>
-                            <input type="number" name="ndeDefectAnalysis" id="ndeDefectAnalysis" placeholder=""
-                                required="" [(ngModel)]="fterecordmodelArr[0].ndeDefectAnalysis" class="form-control">
-                        </td>
+                            <input type="number" formControlName="ndDefectAnalysis" id="ndDefectAnalysis" placeholder=""
+                                class="form-control" [(ngModel)]="fterecordmodelArr[0].ndDefectAnalysis"
+                                [ngClass]="{ 'is-invalid': submitted && ff.ndDefectAnalysis.errors}" /></td>
+                        <div *ngIf="submitted && ff.ndDefectAnalysis.errors" class="invalid-feedback">
+                            <div *ngIf="ff.ndDefectAnalysis.errors?.required"><i class="fa fa-exclamation-triangle"
+                                    style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td><label>Excess FTEs : </label></td>
                         <td>
-                            <input type="number" name="excessFteCount" id="excessFteCount" placeholder="" required=""
-                                [(ngModel)]="fterecordmodelArr[0].excessFteCount" class="form-control">
-                        </td>
+                            <input type="number" formControlName="excessFteCount" id="excessFteCount" placeholder=""
+                                class="form-control" [(ngModel)]="fterecordmodelArr[0].excessFteCount"
+                                [ngClass]="{ 'is-invalid': submitted && ff.excessFteCount.errors}" /></td>
+                        <div *ngIf="submitted && ff.excessFteCount.errors" class="invalid-feedback">
+                            <div *ngIf="ff.excessFteCount.errors?.required"><i class="fa fa-exclamation-triangle"
+                                    style="font-size:12px" title="Required!"></i>
+                            </div>
+                        </div>
                     </tr>
                 </table>
-                <textarea id="note" name="note" placeholder="Note" required="" [(ngModel)]="fterecordmodelArr[0].note"
-                    class="form-control"></textarea>
+                <textarea id="note" formControlName="note" placeholder="Note" [(ngModel)]="fterecordmodelArr[0].note"
+                    class="form-control" style="width: 100%"></textarea>
                 <div class="send-button">
                     <!-- <input type="submit" value="Submit"> -->
                     <button type="submit">Submit</button>
