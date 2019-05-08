@@ -7,8 +7,6 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,12 +30,6 @@ public class FTERecorderController {
 		  LOG.log(Level.INFO, "Inserting FTE"); 
 
 		return service.insertRecords(Arrays.asList(records));
-
-	}
-	
-	@GetMapping("/")
-	public String test() {
-		return "FteRecorderApp service running on port 8080";
 
 	}
 	

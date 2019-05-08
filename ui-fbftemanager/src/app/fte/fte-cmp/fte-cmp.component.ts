@@ -21,7 +21,7 @@ export class FteCmpComponent implements OnInit {
     submitted = false;
 
     constructor(private fterecsvc: FterecorderclientsvcService, private okDialogue: MatDialog,
-        private confirmDialog: MatDialog, private client: HttpClient, private formBuilder: FormBuilder) { }
+        private client: HttpClient, private formBuilder: FormBuilder) { }
 
     ngOnInit() {
         this.fterecordmodelArr[0].ftesPerRosterCount = 0;
@@ -54,9 +54,6 @@ export class FteCmpComponent implements OnInit {
                 Validators.compose([Validators.required])),
             excessFteCount: new FormControl({ value: this.fterecordmodelArr[0].excessFteCount }, Validators.compose([Validators.required])),
             note: new FormControl({ value: this.fterecordmodelArr[0].note })
-            // lastName: ['', Validators.required],
-            // email: ['', [Validators.required, Validators.email]],
-            // password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
 
@@ -74,6 +71,7 @@ export class FteCmpComponent implements OnInit {
     submitMe() {
         this.submitted = true;
 
+        // DON'T DELETE
         //finding invalid controls (don't delete! can be used in other screens for checking!):
         /* const invalid = [];
         const controls = this.fteForm.controls;
@@ -90,51 +88,58 @@ export class FteCmpComponent implements OnInit {
         }
         let sum: number = 0;
         this.fterecordmodelArr.forEach((entry) => {
-            sum += Number(entry.defectCount) +
-                Number(entry.workableDefectsCount) +
+            sum +=
                 Number(entry.defectFteCount) +
-                Number(entry.widgetCount) +
                 Number(entry.ftesLoanedCount) +
-                Number(entry.ptoCount) +
                 Number(entry.ftesBorrowedCount) +
                 Number(entry.ftesForPerformanceCount) +
                 Number(entry.ftesForExtendedScenarioExecCount) +
-                Number(entry.medsDefAnalysisCount) +
-                Number(entry.ndDefectAnalysis) +
                 Number(entry.excessFteCount);
         });
         if (sum !== this.fterecordmodelArr[0].ftesPerRosterCount) {
-            console.log("Fetched count : " + this.fterecordmodelArr[0].ftesPerRosterCount);
-            console.log("Calculated count : " + sum);
-        }
-        this.client.post<any>(this.postUrl, this.fterecordmodelArr)
-            .subscribe(
-                data => {
-                    console.log('Success!', data);
-                    this.okDialogue.open(OkdialogcmpComponent, {
-                        data: {
-                            message: 'Submitted Successfully!',
-                            buttonText: {
-                                ok: 'OK'
-                                // cancel: 'No'
-                            }
-                        }
-                    });
-                },
-                error => {
-                    console.error('Error!', error);
-                    this.okDialogue.open(OkdialogcmpComponent, {
-                        data: {
-                            message: 'Something went wrong! Please try again/Contact the administrator!',
-                            buttonText: {
-                                ok: 'OK'
-                                // cancel: 'No'
-                            }
-                        }
-                    });
+            // console.log("Fetched count : " + this.fterecordmodelArr[0].ftesPerRosterCount);
+            // console.log("Calculated count : " + sum);
+            let dialogRef = this.okDialogue.open(OkdialogcmpComponent, {
+                data: {
+                    message: 'The total FTE Count entered/calculated doesn\'t match with the database. Do you wish to submit anyway?',
+                    buttonText: {
+                        ok: 'Yes',
+                        cancel: 'No'
+                    }
                 }
-            );
-
+            });
+            dialogRef.afterClosed().subscribe(result => {
+                if (result) {
+                    this.client.post<any>(this.postUrl, this.fterecordmodelArr)
+                        .subscribe(
+                            data => {
+                                console.log('Success!', data);
+                                this.okDialogue.open(OkdialogcmpComponent, {
+                                    data: {
+                                        message: 'Submitted Successfully!',
+                                        buttonText: {
+                                            ok: 'OK'
+                                            // cancel: 'No'
+                                        }
+                                    }
+                                });
+                            },
+                            error => {
+                                console.error('Error!', error);
+                                this.okDialogue.open(OkdialogcmpComponent, {
+                                    data: {
+                                        message: 'Something went wrong! Please try again/Contact the administrator!',
+                                        buttonText: {
+                                            ok: 'OK'
+                                            // cancel: 'No'
+                                        }
+                                    }
+                                });
+                            }
+                        );
+                }
+            });
+        }
     }
 
 }

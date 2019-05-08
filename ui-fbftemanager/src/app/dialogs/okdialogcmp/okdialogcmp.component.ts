@@ -7,9 +7,9 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
     styleUrls: ['./okdialogcmp.component.scss']
 })
 export class OkdialogcmpComponent {
-     message = 'Are you sure?'; // Default messages
+    message = 'Are you sure?'; // Default messages
     confirmButtonText = 'Yes';
-    cancelButtonText = 'Cancel';
+    cancelButtonText = '';
     constructor(
         @Inject(MAT_DIALOG_DATA) private data: any,
         private dialogRef: MatDialogRef<OkdialogcmpComponent>) {
@@ -17,7 +17,7 @@ export class OkdialogcmpComponent {
             this.message = data.message || this.message;
             if (data.buttonText) {
                 this.confirmButtonText = data.buttonText.ok || this.confirmButtonText;
-                //this.cancelButtonText = data.buttonText.cancel || this.cancelButtonText;
+                this.cancelButtonText = data.buttonText.cancel || this.cancelButtonText;
             }
         }
         this.dialogRef.updateSize('300vw', '300vw');
@@ -25,5 +25,8 @@ export class OkdialogcmpComponent {
 
     onConfirmClick(): void {
         this.dialogRef.close(true);
+    }
+    onCancelClick(): void {
+        this.dialogRef.close(false);
     }
 }

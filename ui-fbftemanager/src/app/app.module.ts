@@ -28,7 +28,7 @@ import { FormsModule } from '@angular/forms';
         AppRoutingModule,
         HttpClientModule,
         DashboardModule,
-       FormsModule,
+        FormsModule,
         BrowserAnimationsModule
     ],
     providers: [DatePipe],
