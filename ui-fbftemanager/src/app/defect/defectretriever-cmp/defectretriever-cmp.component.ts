@@ -15,11 +15,12 @@ export class DefectretrieverCmpComponent implements OnInit {
     defectsearchModel: DefectsearchclientModule = new DefectsearchclientModule();
     defectData: any[] = [];
     displayedColumns: string[] = ['track', 'Key', 'Summary',
-        'applicableForIe?', 'tobefixed?', 'Comments', 'Edit'];
+        'applicableForIe?', 'tobefixed?', 'Comments', 'upDate', 'Edit'];
     dataSource = new MatTableDataSource();
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
-    constructor(private defectFetch: DefectfetchService, private okDialogue: MatDialog) { }
+    exportUrl = 'http://localhost:8080/defectsToExcel/saveDataExcel';
+    constructor(private defectFetch: DefectfetchService, private editDialog: MatDialog) { }
 
     ngOnInit() {
         this.defectsearchModel.source = 'Meds';
@@ -27,7 +28,7 @@ export class DefectretrieverCmpComponent implements OnInit {
 
     editData(defect) {
         console.log(defect);
-        this.okDialogue.open(EditdilalogcmpComponent, {
+        this.editDialog.open(EditdilalogcmpComponent, {
             data: {
                 defect,
                 buttonText: {
@@ -37,7 +38,7 @@ export class DefectretrieverCmpComponent implements OnInit {
         });
     }
     searchData() {
-        this.dataSource = null;
+        this.dataSource = new MatTableDataSource();
         this.dataSource = this.defectFetch.getDataInArrayFormat(this.defectsearchModel);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -49,5 +50,7 @@ export class DefectretrieverCmpComponent implements OnInit {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-
+    getUrltoExport(): string {
+        return this.defectFetch.exportDataToExcel();
+    }
 }

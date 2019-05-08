@@ -1,4 +1,4 @@
-package com.deloitte.defectRetriever.model;
+package com.defecttoexcel.main.model;
 
 import java.time.LocalDateTime;
 
