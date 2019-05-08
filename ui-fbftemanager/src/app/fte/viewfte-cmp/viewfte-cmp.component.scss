@@ -34,8 +34,13 @@ form[role=insert] h3 {
 form[role=insert] h3 b {
 		color: #013781;
 }
-
-
+.form-control {
+    height: 100%;
+    display: unset;
+    box-shadow:unset;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
 .send-button button {
     padding: 10px 0;
     width: 100%;

@@ -23,7 +23,7 @@ export class ViewfteCmpComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
     public displayedColumns: string[] = ['track', 'weekStDt', 'weekEdDt', 'ftesPerRosterCount', 'defectCount', 'workableDefectsCount',
         'defectFteCount', 'widgetCount', 'ftesLoanedCount', 'ptoCount', 'ftesBorrowedCount', 'ftesForPerformanceCount',
-        'ftesForExtendedScenarioExecCount', 'medsDefAnalysisCount', 'excessFteCount', 'note'];
+        'ftesForExtendedScenarioExecCount', 'medsDefAnalysisCount', 'excessFteCount', 'note', 'delete'];
     public dataSource = new MatTableDataSource();
 
 
