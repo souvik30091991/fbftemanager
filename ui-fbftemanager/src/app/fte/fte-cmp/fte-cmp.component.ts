@@ -25,6 +25,19 @@ export class FteCmpComponent implements OnInit {
 
     ngOnInit() {
         this.fterecordmodelArr[0].ftesPerRosterCount = 0;
+        this.fterecordmodelArr[0].defectCount = 0;
+        this.fterecordmodelArr[0].workableDefectsCount = 0;
+        this.fterecordmodelArr[0].defectFteCount = 0;
+        this.fterecordmodelArr[0].widgetCount = 0;
+        this.fterecordmodelArr[0].ftesLoanedCount = 0;
+        this.fterecordmodelArr[0].ptoCount = 0;
+        this.fterecordmodelArr[0].ftesBorrowedCount = 0;
+        this.fterecordmodelArr[0].ftesForPerformanceCount = 0;
+        this.fterecordmodelArr[0].ftesForExtendedScenarioExecCount = 0;
+        this.fterecordmodelArr[0].medsDefAnalysisCount = 0;
+        this.fterecordmodelArr[0].ndDefectAnalysis = 0;
+        this.fterecordmodelArr[0].excessFteCount = 0;
+
         this.fteForm = this.formBuilder.group({
             track: new FormControl({ value: this.fterecordmodelArr[0].track },
                 Validators.compose([Validators.required])),
@@ -101,7 +114,9 @@ export class FteCmpComponent implements OnInit {
             // console.log("Calculated count : " + sum);
             let dialogRef = this.okDialogue.open(OkdialogcmpComponent, {
                 data: {
-                    message: 'The total FTE Count entered/calculated doesn\'t match with the database. Do you wish to submit anyway?',
+                    message: 'FTECount Mismatch! (The total FTE Count entered/calculated=' + sum +
+                        ', Total FTECount in DB = ' + this.fterecordmodelArr[0].ftesPerRosterCount +
+                        '). Do you wish to submit anyway?',
                     buttonText: {
                         ok: 'Yes',
                         cancel: 'No'
