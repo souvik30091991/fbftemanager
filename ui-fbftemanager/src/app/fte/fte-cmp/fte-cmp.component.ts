@@ -24,19 +24,19 @@ export class FteCmpComponent implements OnInit {
         private client: HttpClient, private formBuilder: FormBuilder) { }
 
     ngOnInit() {
-        this.fterecordmodelArr[0].ftesPerRosterCount = 0;
-        this.fterecordmodelArr[0].defectCount = 0;
-        this.fterecordmodelArr[0].workableDefectsCount = 0;
-        this.fterecordmodelArr[0].defectFteCount = 0;
-        this.fterecordmodelArr[0].widgetCount = 0;
-        this.fterecordmodelArr[0].ftesLoanedCount = 0;
-        this.fterecordmodelArr[0].ptoCount = 0;
-        this.fterecordmodelArr[0].ftesBorrowedCount = 0;
-        this.fterecordmodelArr[0].ftesForPerformanceCount = 0;
-        this.fterecordmodelArr[0].ftesForExtendedScenarioExecCount = 0;
-        this.fterecordmodelArr[0].medsDefAnalysisCount = 0;
-        this.fterecordmodelArr[0].ndDefectAnalysis = 0;
-        this.fterecordmodelArr[0].excessFteCount = 0;
+        this.fterecordmodelArr[0].ftesPerRosterCount = Number(0);
+        this.fterecordmodelArr[0].defectCount = Number(0);
+        this.fterecordmodelArr[0].workableDefectsCount = Number(0);
+        this.fterecordmodelArr[0].defectFteCount = Number(0);
+        this.fterecordmodelArr[0].widgetCount = Number(0);
+        this.fterecordmodelArr[0].ftesLoanedCount = Number(0);
+        this.fterecordmodelArr[0].ptoCount = Number(0);
+        this.fterecordmodelArr[0].ftesBorrowedCount = Number(0);
+        this.fterecordmodelArr[0].ftesForPerformanceCount = Number(0);
+        this.fterecordmodelArr[0].ftesForExtendedScenarioExecCount = Number(0);
+        this.fterecordmodelArr[0].medsDefAnalysisCount = Number(0);
+        this.fterecordmodelArr[0].ndDefectAnalysis = Number(0);
+        this.fterecordmodelArr[0].excessFteCount = Number(0);
 
         this.fteForm = this.formBuilder.group({
             track: new FormControl({ value: this.fterecordmodelArr[0].track },
@@ -154,6 +154,35 @@ export class FteCmpComponent implements OnInit {
                         );
                 }
             });
+        } else {
+            this.client.post<any>(this.postUrl, this.fterecordmodelArr)
+                .subscribe(
+                    data => {
+                        console.log('Success!', data);
+                        this.okDialogue.open(OkdialogcmpComponent, {
+                            data: {
+                                message: 'Submitted Successfully!',
+                                buttonText: {
+                                    ok: 'OK'
+                                    // cancel: 'No'
+                                }
+                            }
+                        });
+                    },
+                    error => {
+                        console.error('Error!', error);
+                        this.okDialogue.open(OkdialogcmpComponent, {
+                            data: {
+                                message: 'Something went wrong! Please try again/Contact the administrator!',
+                                buttonText: {
+                                    ok: 'OK'
+                                    // cancel: 'No'
+                                }
+                            }
+                        });
+                    }
+                );
+
         }
     }
 
