@@ -15,8 +15,8 @@ export class FteCmpComponent implements OnInit {
 
     fterecordmodel: FteRecordClientModel = new FteRecordClientModel();
     fterecordmodelArr: FteRecordClientModel[] = [this.fterecordmodel];
-    postUrl = 'http://localhost:8090/ftemodifications/fterecorder/';
-    getFteCountUrl = 'http://localhost:2311/fetchftedata/getTotalFTECountByTrack/';
+    postUrl = 'http://usmummukepat-r.us.deloitte.com:9129/fterecorder/';
+    getFteCountUrl = 'http://usmummukepat-r.us.deloitte.com:2311/fetchftedata/getTotalFTECountByTrack/';
     fteForm: FormGroup;
     submitted = false;
 
@@ -100,22 +100,30 @@ export class FteCmpComponent implements OnInit {
             return;
         }
         let sum: number = 0;
+        let diff: number = 0;
         this.fterecordmodelArr.forEach((entry) => {
             sum +=
                 Number(entry.defectFteCount) +
+                Number(entry.widgetCount) +
+                Number(entry.ptoCount) +
                 Number(entry.ftesLoanedCount) +
                 Number(entry.ftesBorrowedCount) +
                 Number(entry.ftesForPerformanceCount) +
                 Number(entry.ftesForExtendedScenarioExecCount) +
+                Number(entry.medsDefAnalysisCount) +
+                Number(entry.ndDefectAnalysis) +
                 Number(entry.excessFteCount);
         });
         if (sum !== this.fterecordmodelArr[0].ftesPerRosterCount) {
             // console.log("Fetched count : " + this.fterecordmodelArr[0].ftesPerRosterCount);
             // console.log("Calculated count : " + sum);
+            diff=Number(this.fterecordmodelArr[0].ftesPerRosterCount) - Number(sum);
+            this.fterecordmodelArr[0].excessFteCount=diff;
             let dialogRef = this.okDialogue.open(OkdialogcmpComponent, {
                 data: {
                     message: 'FTECount Mismatch! (The total FTE Count entered/calculated=' + sum +
                         ', Total FTECount in DB = ' + this.fterecordmodelArr[0].ftesPerRosterCount +
+                        ', Total FTECount Diff = ' + diff +
                         '). Do you wish to submit anyway?',
                     buttonText: {
                         ok: 'Yes',
