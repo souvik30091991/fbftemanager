@@ -13,6 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,10 +24,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.deloitte.defectLoader.client.DefectRetrieverFeignClient;
 import com.deloitte.defectLoader.model.DefectRecord;
 import com.deloitte.defectLoader.service.DefectLoaderService;
 
 @RestController
+@RefreshScope
 @RequestMapping(path = "/defectLoader")
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class DefectLoaderController {
@@ -35,6 +38,9 @@ public class DefectLoaderController {
 
 	@Autowired
 	DefectLoaderService service;
+
+	@Autowired
+	DefectRetrieverFeignClient defectClient;
 
 	@PostMapping(path = "/loadDefectDump")
 	public boolean loadDefectDump(@RequestParam("file") MultipartFile defExcelDataFile) throws IOException {
@@ -60,10 +66,10 @@ public class DefectLoaderController {
 			defRecord.setComments(formatter.formatCellValue(row.getCell(4)));
 			if (!"".equals(formatter.formatCellValue(row.getCell(5)).trim())) {
 				defRecord.setTrack(formatter.formatCellValue(row.getCell(5)));
-			}else{
+			} else {
 				defRecord.setTrack("NA");
 			}
-		
+
 			defectList.add(defRecord);
 		}
 		if (defectList != null) {
@@ -78,6 +84,7 @@ public class DefectLoaderController {
 		LOG.log(Level.INFO, "Updating defect dump");
 		boolean isDataUpdated = false;
 		isDataUpdated = service.updateRecords(Stream.of(records).collect(Collectors.toList()));
+		List<DefectRecord> defectList = defectClient.fetchDefectDump("Meds");
 		return isDataUpdated;
 
 	}
