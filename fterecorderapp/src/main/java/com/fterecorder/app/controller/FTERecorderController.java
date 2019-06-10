@@ -8,6 +8,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.deloitte.defectLoader.model.DefectRecord;
 import com.fterecorder.app.model.FTERecord;
 import com.fterecorder.app.service.FTERecorderService;
 
@@ -42,6 +45,7 @@ public class FTERecorderController {
 			try {
 			    if (future.isDone()) {
 			        result = future.get();
+			        executor.shutdown();
 			    }
 			} catch (ExecutionException | InterruptedException e) {
 			    e.printStackTrace();
@@ -53,5 +57,14 @@ public class FTERecorderController {
 	@RequestMapping("/deleteRecord")
 	public void deleteData(@RequestParam Long id) {
 		this.service.deleteById(id);
+	}
+	
+	@RequestMapping(path = "/updateRecord", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public boolean updateRecord(@RequestBody FTERecord record) {
+		LOG.log(Level.INFO, "Updating FTE record");
+		boolean isDataUpdated = false;
+		isDataUpdated = service.updateRecords(record);
+		return isDataUpdated;
+
 	}
 }

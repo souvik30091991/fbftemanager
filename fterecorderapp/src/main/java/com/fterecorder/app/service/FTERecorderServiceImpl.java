@@ -57,4 +57,16 @@ public class FTERecorderServiceImpl implements FTERecorderService {
 		
 	}
 	
+	@Override
+	public boolean updateRecords(FTERecord record) {
+		try {
+			repo.save(record);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
 }
