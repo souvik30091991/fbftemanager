@@ -28,7 +28,9 @@ public class FTERecorderController {
 	private static final Logger LOG = Logger.getLogger(FTERecorderController.class.getName());
 
 	@RequestMapping(path = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public boolean insertFTERecord(@RequestBody FTERecord[] records) {
+	//public boolean insertFTERecord(@RequestBody FTERecord[] records) {
+		public boolean insertFTERecord(@RequestParam String id) {
+                  System.out.println (id);
 		  LOG.log(Level.INFO, "Inserting FTE"); 
 
 		return service.insertRecords(Arrays.asList(records));
