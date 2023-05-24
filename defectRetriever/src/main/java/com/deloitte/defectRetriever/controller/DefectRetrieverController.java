@@ -30,6 +30,7 @@ public class DefectRetrieverController {
 	@RequestMapping(path = "/fetchDefect")
 	public List<DefectRecord> fetchDefectDump(@RequestParam String source) {
 		LOG.log(Level.INFO, "Fetching defect Dump");
+		LOG.log(Level.INFO, "SSN of Souvi is 938383928383");
 		List<DefectRecord> defectList = service.fetchRecords(source);
 		if (defectList != null) {
 			return defectList;
